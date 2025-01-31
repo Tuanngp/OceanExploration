@@ -8,7 +8,7 @@ public class FuelPickup : MonoBehaviour
     {
         if (other.TryGetComponent(out SubmarineController submarine))
         {
-            submarine.AddFuel(fuelAmount);
+            // submarine.AddFuel(fuelAmount);
             Destroy(gameObject);
         }
     }
