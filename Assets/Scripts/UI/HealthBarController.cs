@@ -3,20 +3,22 @@ using UnityEngine.UI;
 
 public class HealthBarController : MonoBehaviour
 {
+    [Header("UI Elements")]
+    public RectTransform healthBar;
     [Header("Health Settings")]
-    public Image healthLeft;
-    public Image healthRight;
+    private Image healthLeft;
+    private Image healthRight;
     public float maxHealth = 100f;
     public float currentHealth;
 
     [Header("Mana Settings")]
-    public Image manaLeft;
-    public Image manaRight;
+    private Image manaLeft;
+    private Image manaRight;
     public float maxMana = 100f;
     public float currentMana;
 
     [Header("Stamina Settings")]
-    public Image staminaPip;
+    private Image staminaPip;
     public float maxStamina = 100f;
     public float currentStamina;
 
@@ -25,6 +27,11 @@ public class HealthBarController : MonoBehaviour
         currentHealth = maxHealth;
         currentMana = maxMana;
         currentStamina = maxStamina;
+        healthLeft = healthBar.Find("Hub/Health/HealthLeft").GetComponent<Image>();
+        healthRight = healthBar.Find("Hub/Health/HealthRight").GetComponent<Image>();
+        manaLeft = healthBar.Find("Hub/Mana/ManaLeft").GetComponent<Image>();
+        manaRight = healthBar.Find("Hub/Mana/ManaRight").GetComponent<Image>();
+        staminaPip = healthBar.Find("Hub/Stamina pip/Stamina pip").GetComponent<Image>();
     }
 
     public void DecreaseHealth(float amount)
