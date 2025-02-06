@@ -9,7 +9,6 @@ public class ShootingHandler : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
 
     private float nextFireTime;
-    private EnergySystem energySystem;
 
     private HealthBarController healthBarController;
 
@@ -18,21 +17,18 @@ public class ShootingHandler : MonoBehaviour
         healthBarController = GetComponent<HealthBarController>();
     }
 
-    private void Awake() => energySystem = GetComponent<EnergySystem>();
-
     public void HandleShooting()
     {
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime && energySystem.CanShoot())
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
         {
             Shoot();
-            energySystem.ConsumeEnergyForShooting();
             nextFireTime = Time.time + fireRate;
         }
     }
 
     private void Shoot()
     {
-        if (!projectilePrefab || !firePoint) return;
+        if (!projectilePrefab || !firePoint || healthBarController.currentMana.Equals(0f)) return;
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         if (projectile.TryGetComponent(out Rigidbody2D rb))

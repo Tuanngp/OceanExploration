@@ -62,7 +62,8 @@ public class HealthBarController : MonoBehaviour
 
     public void DecreaseMana(float amount)
     {
-        currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
+        currentMana = Mathf.Clamp(currentMana - amount, 0, maxMana);
+        Debug.Log("Current mana: " + currentMana);
         if (manaRight.fillAmount > 0)
         {
             manaRight.fillAmount = Mathf.Max(0, manaRight.fillAmount - amount);
@@ -76,6 +77,8 @@ public class HealthBarController : MonoBehaviour
     public void IncreaseMana(float amount)
     {
         currentMana = Mathf.Clamp(currentMana + amount, 0, maxMana);
+        Debug.Log("Current mana: " + currentMana);
+
         if (manaLeft.fillAmount < 1)
         {
             manaLeft.fillAmount = Mathf.Min(1, manaLeft.fillAmount + amount);
