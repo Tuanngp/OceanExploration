@@ -2,34 +2,41 @@
 
 public class InfiniteBackground : MonoBehaviour
 {
-    [SerializeField] private Transform player; // Nhân vật (tàu ngầm)
-    [SerializeField] private float parallaxSpeed = 0.5f; // Tốc độ cuộn background
-    private Vector2 startPosition; // Vị trí ban đầu của background
-    private float backgroundWidth; // Chiều rộng của background (sprite)
+    public Transform player; // Nhân vật
+    public Transform[] backgrounds; // Các phần nền
+    private float backgroundWidth; // Chiều rộng mỗi ảnh nền
 
     private void Start()
     {
-        // Lưu vị trí ban đầu và lấy kích thước background
-        startPosition = transform.position;
-        backgroundWidth = GetComponent<SpriteRenderer>().bounds.size.x;
+        if (backgrounds.Length == 0) return;
+
+        // Lấy chiều rộng của một ảnh nền (giả sử tất cả có cùng kích thước)
+        backgroundWidth = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     private void Update()
     {
-        // Di chuyển background ngược lại với hướng của nhân vật
-        float distance = player.position.x * parallaxSpeed;
+        // Xác định phần nền nào đang ở xa nhất bên trái/phải
+        Transform leftMost = backgrounds[0];
+        Transform rightMost = backgrounds[0];
 
-        // Thay đổi vị trí background
-        transform.position = new Vector3(startPosition.x + distance, transform.position.y, transform.position.z);
-
-        // Khi nhân vật vượt qua giới hạn, lặp background
-        if (player.position.x > startPosition.x + backgroundWidth)
+        foreach (Transform bg in backgrounds)
         {
-            startPosition.x += backgroundWidth; // Di chuyển background qua bên phải
+            if (bg.position.x < leftMost.position.x)
+                leftMost = bg;
+            if (bg.position.x > rightMost.position.x)
+                rightMost = bg;
         }
-        else if (player.position.x < startPosition.x - backgroundWidth)
+
+        // Nếu nhân vật vượt qua phần nền bên phải, di chuyển phần nền bên trái ra phía trước
+        if (player.position.x > rightMost.position.x - backgroundWidth / 2)
         {
-            startPosition.x -= backgroundWidth; // Di chuyển background qua bên trái
+            leftMost.position = new Vector3(rightMost.position.x + backgroundWidth, leftMost.position.y, leftMost.position.z);
+        }
+        // Nếu nhân vật vượt qua phần nền bên trái, di chuyển phần nền bên phải ra phía sau
+        else if (player.position.x < leftMost.position.x + backgroundWidth / 2)
+        {
+            rightMost.position = new Vector3(leftMost.position.x - backgroundWidth, rightMost.position.y, rightMost.position.z);
         }
     }
 }

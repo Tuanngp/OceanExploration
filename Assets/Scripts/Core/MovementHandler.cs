@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Linq;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementHandler : MonoBehaviour
 {
-    public Transform background;  // Kéo background vào đây từ Unity
+    public Transform background; // Chứa nhiều ảnh
     private Vector2 minBounds, maxBounds;
 
     [Header("Movement Settings")]
@@ -21,31 +22,33 @@ public class MovementHandler : MonoBehaviour
 
     private void Start()
     {
-        // Lấy kích thước của background
-        SpriteRenderer bgRenderer = background.GetComponent<SpriteRenderer>();
+        // Lấy kích thước nhân vật
         SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
-
-
-        if (bgRenderer != null && playerRenderer != null)
+        if (playerRenderer != null)
         {
-            float bgHalfWidth = bgRenderer.bounds.size.x / 2;
-            float bgHalfHeight = bgRenderer.bounds.size.y / 2;
-
-            // Lấy nửa chiều rộng và chiều cao của nhân vật
-            playerHalfWidth = playerRenderer.bounds.size.x / 2;
-            playerHalfHeight = playerRenderer.bounds.size.y / 2;
-            Debug.Log(playerHalfWidth + " " + playerHalfHeight);
-            // Giới hạn mới có tính đến kích thước nhân vật
-            minBounds = new Vector2(
-                background.position.x - bgHalfWidth + playerHalfWidth,
-                background.position.y - bgHalfHeight + playerHalfHeight
-            );
-
-            maxBounds = new Vector2(
-                background.position.x + bgHalfWidth - playerHalfWidth,
-                background.position.y + bgHalfHeight - playerHalfHeight
-            );
+            playerHalfWidth = playerRenderer.bounds.extents.x;
+            playerHalfHeight = playerRenderer.bounds.extents.y;
         }
+
+        // Tìm giới hạn tổng thể từ các ảnh nền
+        CalculateBounds();
+    }
+
+    private void CalculateBounds()
+    {
+        if (background == null) return;
+
+        var spriteRenderers = background.GetComponentsInChildren<SpriteRenderer>();
+        if (spriteRenderers.Length == 0) return;
+
+        float minX = spriteRenderers.Min(sr => sr.bounds.min.x);
+        float maxX = spriteRenderers.Max(sr => sr.bounds.max.x);
+        float minY = spriteRenderers.Min(sr => sr.bounds.min.y);
+        float maxY = spriteRenderers.Max(sr => sr.bounds.max.y);
+
+        // Giới hạn có tính đến kích thước nhân vật
+        minBounds = new Vector2(minX + playerHalfWidth, minY + playerHalfHeight);
+        maxBounds = new Vector2(maxX - playerHalfWidth, maxY - playerHalfHeight);
     }
 
     public void UpdateMovement(Vector2 input)
@@ -76,7 +79,7 @@ public class MovementHandler : MonoBehaviour
             Vector2 newPosition = rb.position + moveDirection * currentSpeed * Time.fixedDeltaTime;
 
             // Giới hạn vị trí nhân vật
-            newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, maxBounds.x);
+            // newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, maxBounds.x);
             newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
 
             rb.MovePosition(newPosition);
