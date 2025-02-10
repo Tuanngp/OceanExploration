@@ -1,10 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBarController : MonoBehaviour
 {
     [Header("UI Elements")]
     public RectTransform healthBar;
+
     [Header("Health Settings")]
     private Image healthLeft;
     private Image healthRight;
@@ -22,6 +23,11 @@ public class HealthBarController : MonoBehaviour
     public float maxStamina = 100f;
     public float currentStamina;
 
+    [Header("Damage Settings")]
+    public float damagePerHit = 10f; // Tăng lên 600 để mỗi khung hình trừ khoảng 10 HP
+
+    [SerializeField] private GameObject deathEffectPrefab; // Hiệu ứng chết
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -34,9 +40,21 @@ public class HealthBarController : MonoBehaviour
         staminaPip = healthBar.Find("Hub/Stamina pip/Stamina pip").GetComponent<Image>();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy")) // Nếu quái vật chạm vào submarine
+        {
+            Debug.Log("Enemy detected! Decreasing health.");
+            DecreaseHealth(damagePerHit * Time.deltaTime);
+        }
+    }
+
     public void DecreaseHealth(float amount)
     {
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
+        currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+        Debug.Log("Current hp: " + currentHealth);
+
         if (healthRight.fillAmount > 0)
         {
             healthRight.fillAmount = Mathf.Max(0, healthRight.fillAmount - amount);
@@ -45,11 +63,22 @@ public class HealthBarController : MonoBehaviour
         {
             healthLeft.fillAmount = Mathf.Max(0, healthLeft.fillAmount - amount);
         }
-    }
 
+        if (healthLeft.fillAmount <= 0.2)
+        {
+            GameObject deathEffect = Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(deathEffect, 3f);
+            Invoke(nameof(DestroyObject), 0.5f); 
+        }
+    }
+    private void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
     public void IncreaseHealth(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
         if (healthLeft.fillAmount < 1)
         {
             healthLeft.fillAmount = Mathf.Min(1, healthLeft.fillAmount + amount);
