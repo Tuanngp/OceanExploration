@@ -1,53 +1,54 @@
 using UnityEngine;
-using System.Linq; // Để sử dụng LINQ
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player; // Nhân vật để camera theo dõi
-    public Transform backgroundContainer; // GameObject chứa tất cả các ảnh nền
+    public Transform target; // Nhân vật cần theo dõi
+    public Transform backgroundParent; // Object chứa tất cả ảnh nền
     public float smoothSpeed = 0.1f; // Độ mượt khi camera di chuyển
 
-    private Vector2 minLimit;
-    private Vector2 maxLimit;
+    private float minY, maxY;
+    private Camera cam;
 
-    private void Start()
+    void Start()
     {
-        if (backgroundContainer == null)
-        {
-            Debug.LogError("Chưa gán BackgroundContainer!");
-            return;
-        }
-
-        // Lấy tất cả SpriteRenderer trong backgroundContainer
-        SpriteRenderer[] sprites = backgroundContainer.GetComponentsInChildren<SpriteRenderer>();
-
-        if (sprites.Length == 0)
-        {
-            Debug.LogError("Không tìm thấy ảnh nền nào trong BackgroundContainer!");
-            return;
-        }
-
-        // Tìm min Y (cạnh dưới) và max Y (cạnh trên) của tất cả các sprite
-        minLimit.y = sprites.Min(sprite => sprite.bounds.min.y);
-        maxLimit.y = sprites.Max(sprite => sprite.bounds.max.y);
-
-        // Giới hạn theo chiều ngang dựa trên vị trí nhân vật hoặc bản đồ
-        minLimit.x = player.position.x - 10f; // Hoặc lấy từ map
-        maxLimit.x = player.position.x + 10f; // Hoặc lấy từ map
+        cam = Camera.main;
+        CalculateBackgroundBounds();
     }
 
-    private void LateUpdate()
+    void LateUpdate()
     {
-        if (player == null) return;
+        if (target == null) return;
 
-        // Lấy vị trí mong muốn của camera theo nhân vật
-        Vector3 desiredPosition = new Vector3(player.position.x, player.position.y, transform.position.z);
+        // Lấy vị trí camera hiện tại
+        Vector3 newPosition = transform.position;
+        newPosition.x = target.position.x;
+        newPosition.y = Mathf.Clamp(target.position.y, minY, maxY);
 
-        // Giới hạn camera trong khoảng min/max
-        desiredPosition.x = Mathf.Clamp(desiredPosition.x, minLimit.x, maxLimit.x);
-        desiredPosition.y = Mathf.Clamp(desiredPosition.y, minLimit.y, maxLimit.y);
+        // Di chuyển camera mượt mà
+        transform.position = Vector3.Lerp(transform.position, newPosition, smoothSpeed);
+    }
 
-        // Dịch chuyển Camera mượt mà
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+    void CalculateBackgroundBounds()
+    {
+        if (backgroundParent == null) return;
+
+        float minYValue = float.MaxValue, maxYValue = float.MinValue;
+
+        foreach (Transform child in backgroundParent)
+        {
+            SpriteRenderer spriteRenderer = child.GetComponent<SpriteRenderer>();
+            if (spriteRenderer)
+            {
+                Bounds bounds = spriteRenderer.bounds;
+                minYValue = Mathf.Min(minYValue, bounds.min.y);
+                maxYValue = Mathf.Max(maxYValue, bounds.max.y);
+            }
+        }
+
+        // Lấy kích thước camera để tránh vượt ra ngoài biên
+        float camHeight = cam.orthographicSize;
+
+        minY = minYValue + camHeight; // Giới hạn dưới
+        maxY = maxYValue - camHeight; // Giới hạn trên
     }
 }

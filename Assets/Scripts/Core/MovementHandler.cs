@@ -8,7 +8,7 @@ public class MovementHandler : MonoBehaviour
     private Vector2 minBounds, maxBounds;
 
     [Header("Movement Settings")]
-    [SerializeField] private float baseSpeed = 5f;
+    [SerializeField] private float baseSpeed = 20f;
     [SerializeField] private float accelerationRate = 2f;
     [SerializeField] private float decelerationRate = 1f;
     [SerializeField] private float maxSpeedMultiplier = 2f;
