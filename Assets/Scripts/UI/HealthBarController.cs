@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBarController : MonoBehaviour
@@ -22,6 +22,8 @@ public class HealthBarController : MonoBehaviour
     public float maxStamina = 100f;
     public float currentStamina;
 
+    [Header("Damage Settings")]
+    public float damagePerHit = 10f;
     void Start()
     {
         currentHealth = maxHealth;
@@ -33,7 +35,14 @@ public class HealthBarController : MonoBehaviour
         manaRight = healthBar.Find("Hub/Mana/ManaRight").GetComponent<Image>();
         staminaPip = healthBar.Find("Hub/Stamina pip/Stamina pip").GetComponent<Image>();
     }
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy")) 
+        {
+            Debug.Log("Enemy detected! Decreasing health.");
+            DecreaseHealth(damagePerHit);
+        }
+    }
     public void DecreaseMana(float amount)
     {
         currentMana = Mathf.Clamp(currentMana - amount, 0, maxMana);
