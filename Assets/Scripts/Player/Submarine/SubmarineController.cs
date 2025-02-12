@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(MovementHandler))]
 [RequireComponent(typeof(RotationHandler))]
@@ -36,5 +36,14 @@ public class SubmarineController : MonoBehaviour
         );
 
         movementHandler.UpdateMovement(input);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin")) // Kiểm tra nếu va chạm với coin
+        {
+            Destroy(other.gameObject); // Xóa coin khi chạm vào
+            ScoreManager.instance.AddScore(10);
+        }
     }
 }
