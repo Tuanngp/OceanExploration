@@ -16,7 +16,6 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Xử lý va chạm
         if (!isHit && other.CompareTag("Enemy"))
         {
             if (other.TryGetComponent(out IDamageable target))
