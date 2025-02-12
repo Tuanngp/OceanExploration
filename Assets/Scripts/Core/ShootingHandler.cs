@@ -10,13 +10,6 @@ public class ShootingHandler : MonoBehaviour
 
     private float nextFireTime;
 
-    private HealthBarController healthBarController;
-
-    void Start()
-    {
-        healthBarController = GetComponent<HealthBarController>();
-    }
-
     public void HandleShooting()
     {
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
@@ -28,13 +21,12 @@ public class ShootingHandler : MonoBehaviour
 
     private void Shoot()
     {
-        if (!projectilePrefab || !firePoint || healthBarController.currentMana.Equals(0f)) return;
+        if (!projectilePrefab || !firePoint) return;
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         if (projectile.TryGetComponent(out Rigidbody2D rb))
         {
             rb.linearVelocity = firePoint.right * projectileSpeed;
-            healthBarController.DecreaseMana(2 * Time.deltaTime);
         }
     }
 }

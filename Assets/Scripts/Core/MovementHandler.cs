@@ -4,7 +4,7 @@ using System.Linq;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementHandler : MonoBehaviour
 {
-    public Transform background; // Chứa nhiều ảnh
+    public Transform background;
     private Vector2 minBounds, maxBounds;
 
     [Header("Movement Settings")]
@@ -17,11 +17,13 @@ public class MovementHandler : MonoBehaviour
     private Vector2 moveDirection;
     private float currentSpeedMultiplier = 1f;
     private float playerHalfWidth, playerHalfHeight;
-
+    private HealthBarController healthBarController;
     private void Awake() => rb = GetComponent<Rigidbody2D>();
 
     private void Start()
     {
+        healthBarController = GetComponent<HealthBarController>();
+
         // Lấy kích thước nhân vật
         SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
         if (playerRenderer != null)
@@ -57,10 +59,12 @@ public class MovementHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            if (healthBarController.currentMana <= 0f) return;
             currentSpeedMultiplier = Mathf.Min(
                 currentSpeedMultiplier + accelerationRate * Time.deltaTime,
                 maxSpeedMultiplier
             );
+            healthBarController.DecreaseMana(2 * Time.deltaTime);
         }
         else
         {
@@ -79,7 +83,6 @@ public class MovementHandler : MonoBehaviour
             Vector2 newPosition = rb.position + moveDirection * currentSpeed * Time.fixedDeltaTime;
 
             // Giới hạn vị trí nhân vật
-            // newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, maxBounds.x);
             newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
 
             rb.MovePosition(newPosition);
