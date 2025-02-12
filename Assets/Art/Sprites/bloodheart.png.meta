@@ -372,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bloodheart_0: -1303501238980059562
+      bloodheart_1: 3927601881084901698
+      bloodheart_2: -1954958400401081672
+      bloodheart_3: 1214467197198429538
+      bloodheart_4: -2452921762622438017
+      bloodheart_5: 5401532269799083878
+      bloodheart_6: 4583361861916096649
+      bloodheart_7: 182293296644557037
+      bloodheart_8: -911785611866896270
+      bloodheart_9: -8545824048234899816
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
