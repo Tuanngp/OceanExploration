@@ -5,7 +5,7 @@ public class SpawnCoins : MonoBehaviour
 {
     public GameObject coinPrefab;
     public int numberOfCoins = 50;
-    public float minY = 345f, maxY = 398f;
+    public float minY = -50f, maxY = -10f;
     public float offsetX = 50f; // Khoảng cách X để spawn quanh tàu
     public Transform submarine; // Tham chiếu đến tàu ngầm
     public float spawnInterval = 0.5f; // Thời gian giữa mỗi lần tạo coin
