@@ -26,7 +26,7 @@ public class MonsterAI : MonoBehaviour, IDamageable
                 Debug.Log("Monster đã phát hiện tàu, bắt đầu đuổi theo!");
             }
 
-            if (hasSpottedPlayer) 
+            if (hasSpottedPlayer)
             {
                 Vector3 direction = (target.position - transform.position).normalized;
                 isMoving = direction.magnitude > 0.01f;
@@ -67,7 +67,7 @@ public class MonsterAI : MonoBehaviour, IDamageable
         if (target == null) return false;
 
         float distance = Vector3.Distance(transform.position, target.position);
-        return distance < 60f; 
+        return distance < 60f;
     }
 
     private void ChangeColor(Color newColor)
