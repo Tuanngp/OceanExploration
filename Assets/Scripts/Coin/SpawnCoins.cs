@@ -4,7 +4,7 @@ using UnityEngine;
 public class SpawnCoins : MonoBehaviour
 {
     public GameObject coinPrefab;  
-    public int numberOfCoins = 10;
+    public int numberOfCoins = 5;
     public float minX = 320f, maxX = 350f;
     public float minY = 230f, maxY = 247f;
 
