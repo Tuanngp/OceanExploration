@@ -51,6 +51,7 @@ MonoBehaviour:
   currentMana: 0
   maxStamina: 100
   currentStamina: 0
+  damagePerHit: 10
 --- !u!1 &4218453283190180387
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,15 +128,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7530177133356341135, guid: 51e93be6c1065424eab71257d220de4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.2, y: 1.4}
+  m_Size: {x: 1.4, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5057866891303988167
@@ -357,6 +358,7 @@ MonoBehaviour:
   currentMana: 0
   maxStamina: 100
   currentStamina: 0
+  damagePerHit: 10
 --- !u!114 &4863877791830896879
 MonoBehaviour:
   m_ObjectHideFlags: 0

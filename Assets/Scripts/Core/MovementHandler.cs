@@ -6,6 +6,7 @@ public class MovementHandler : MonoBehaviour
 {
     public Transform background;
     private Vector2 minBounds, maxBounds;
+    private Animator animator;
 
     [Header("Movement Settings")]
     [SerializeField] private float baseSpeed = 20f;
@@ -23,7 +24,7 @@ public class MovementHandler : MonoBehaviour
     private void Start()
     {
         healthBarController = GetComponent<HealthBarController>();
-
+        animator = GetComponent<Animator>();
         // Lấy kích thước nhân vật
         SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
         if (playerRenderer != null)
@@ -59,6 +60,7 @@ public class MovementHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            animator.SetTrigger("Boost");
             if (healthBarController.currentMana <= 0f) return;
             currentSpeedMultiplier = Mathf.Min(
                 currentSpeedMultiplier + accelerationRate * Time.deltaTime,
