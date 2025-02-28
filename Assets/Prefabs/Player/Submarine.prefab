@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHealth: 100
-  currentHealth: 0
   maxMana: 100
   currentMana: 0
   maxStamina: 100
@@ -235,12 +234,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7581330166852469204}
-  - component: {fileID: 2672879590057395204}
   - component: {fileID: 353996675027138428}
   - component: {fileID: 1378018413197064594}
   - component: {fileID: 9220405285904033661}
   - component: {fileID: 4962320497026000490}
   - component: {fileID: 4863877791830896879}
+  - component: {fileID: 8032874119788574307}
+  - component: {fileID: 4151126739483649091}
+  - component: {fileID: 2672879590057395204}
   - component: {fileID: 3357245864985474739}
   - component: {fileID: 9115444008671319841}
   m_Layer: 0
@@ -269,33 +270,6 @@ Transform:
   - {fileID: 9095676702995701314}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &2672879590057395204
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5935458066640018529}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &353996675027138428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHealth: 100
-  currentHealth: 0
   maxMana: 100
   currentMana: 0
   maxStamina: 100
@@ -374,6 +347,100 @@ MonoBehaviour:
   firePoint: {fileID: 7000971807099973310}
   projectileSpeed: 10
   fireRate: 0.5
+  baseDamage: 10
+  currentDamage: 0
+--- !u!114 &8032874119788574307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935458066640018529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51cb9de92d48d6040a4bc49804f5f375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rareResources: 1000
+  speedUpgradeCost: 50
+  healthUpgradeCost: 75
+  weaponUpgradeCost: 60
+  speedLevel: 1
+  healthLevel: 1
+  weaponLevel: 1
+  maxLevel: 5
+  baseSpeedValue: 5
+  speedIncreasePerLevel: 2
+  baseHealthValue: 100
+  healthIncreasePerLevel: 20
+  baseDamageValue: 10
+  damageIncreasePerLevel: 5
+  shipSpriteRenderer: {fileID: 8377259587039797353}
+  shipParts:
+  - {fileID: -8470065270455496937, guid: 2f141b53978059947a98bd72c5f3f20b, type: 3}
+  - {fileID: 9198504000052830509, guid: e3c95f9f45c523a4ab1bb784a4d7f742, type: 3}
+  - {fileID: -3888763405390159545, guid: aa2879c085663604d8a0671246a71dbe, type: 3}
+  - {fileID: -755008450123188125, guid: c4b22b34d2d252d44981fcbb98eef841, type: 3}
+  - {fileID: 1151715515443333116, guid: f91fc89b4e68ce04489fb63056b00183, type: 3}
+  - {fileID: -2540028914066445034, guid: 540bdb94e9c35944597d2ada27758ecb, type: 3}
+  currentShipPartIndex: 0
+--- !u!114 &4151126739483649091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935458066640018529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a528c4e258c93c0499b58b45a556cb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradePanel: {fileID: 0}
+  resourceText: {fileID: 0}
+  speedButton: {fileID: 0}
+  healthButton: {fileID: 0}
+  weaponButton: {fileID: 0}
+  speedCostText: {fileID: 0}
+  healthCostText: {fileID: 0}
+  weaponCostText: {fileID: 0}
+  speedValueText: {fileID: 0}
+  healthValueText: {fileID: 0}
+  weaponValueText: {fileID: 0}
+  speedLevelText: {fileID: 0}
+  healthLevelText: {fileID: 0}
+  weaponLevelText: {fileID: 0}
+  closeButton: {fileID: 0}
+  previousShipButton: {fileID: 0}
+  nextShipButton: {fileID: 0}
+  upgradeManager: {fileID: 0}
+--- !u!50 &2672879590057395204
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935458066640018529}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!60 &3357245864985474739
 PolygonCollider2D:
   m_ObjectHideFlags: 0
