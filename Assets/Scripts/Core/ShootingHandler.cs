@@ -3,13 +3,19 @@ using UnityEngine;
 public class ShootingHandler : MonoBehaviour
 {
     [Header("Shooting Settings")]
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private float projectileSpeed = 10f;
-    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] public GameObject projectilePrefab;
+    [SerializeField] public Transform firePoint;
+    [SerializeField] public float projectileSpeed = 10f;
+    [SerializeField] public float fireRate = 0.5f;
+    [SerializeField] private float baseDamage = 10f;
+    public float currentDamage;
 
     private float nextFireTime;
 
+    void Start()
+    {
+        currentDamage = baseDamage;
+    }
     public void HandleShooting()
     {
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
@@ -28,5 +34,15 @@ public class ShootingHandler : MonoBehaviour
         {
             rb.linearVelocity = firePoint.right * projectileSpeed;
         }
+
+        if (projectile.TryGetComponent(out Projectile projectileScript))
+        {
+            projectileScript.SetDamage(currentDamage);
+        }
+    }
+
+    public void UpdateDamage(float newDamage)
+    {
+        currentDamage = newDamage;
     }
 }

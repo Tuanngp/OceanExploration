@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MonsterAI : MonoBehaviour, IDamageable
+public class MonsterAI : MonoBehaviour
 {
     public Transform target;
     public float speed = 5f;
     private Animator animator;
     private bool isDead = false;
-    private int currentHealth = 100;
+    private float currentHealth = 100;
     private bool isMoving = false;
     private bool hasSpottedPlayer = false;
-
+    [SerializeField] private float damageResistance = 0f;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -84,9 +84,10 @@ public class MonsterAI : MonoBehaviour, IDamageable
         ChangeColor(Color.white);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        float reducedDamage = damage * (1f - damageResistance);
+        currentHealth -= reducedDamage;
         Debug.Log("Monster bị bắn, máu còn lại: " + currentHealth);
         ChangeColor(Color.red);
 
@@ -104,7 +105,7 @@ public class MonsterAI : MonoBehaviour, IDamageable
     {
         isDead = true;
         animator.SetTrigger("death");
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 0.1f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

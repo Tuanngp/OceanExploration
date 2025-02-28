@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Environment
   - Coin
+  - RareResource
   layers:
   - Default
   - TransparentFX

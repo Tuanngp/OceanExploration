@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float lifetime = 3f;
-    [SerializeField] private int damage = 10;
+    [SerializeField] private float damage = 10;
     private Animator animator;
     private bool isHit = false;
 
@@ -14,11 +14,16 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
+    public void SetDamage(float damageValue)
+    {
+        damage = damageValue;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isHit && other.CompareTag("Enemy"))
         {
-            if (other.TryGetComponent(out IDamageable target))
+            if (other.TryGetComponent(out MonsterAI target))
             {
                 isHit = true;
                 animator.SetTrigger("Hit");
@@ -28,9 +33,4 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject, 0.45f);
         }
     }
-}
-
-internal interface IDamageable
-{
-    void TakeDamage(int damage);
 }
