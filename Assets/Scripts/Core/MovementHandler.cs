@@ -9,10 +9,10 @@ public class MovementHandler : MonoBehaviour
     private Animator animator;
 
     [Header("Movement Settings")]
-    [SerializeField] private float baseSpeed = 20f;
+    [SerializeField] public float baseSpeed = 20f;
     [SerializeField] private float accelerationRate = 2f;
     [SerializeField] private float decelerationRate = 1f;
-    [SerializeField] private float maxSpeedMultiplier = 2f;
+    [SerializeField] public float maxSpeedMultiplier = 2f;
 
     private Rigidbody2D rb;
     private Vector2 moveDirection;
@@ -32,9 +32,6 @@ public class MovementHandler : MonoBehaviour
             playerHalfWidth = playerRenderer.bounds.extents.x;
             playerHalfHeight = playerRenderer.bounds.extents.y;
         }
-
-        // Tìm giới hạn tổng thể từ các ảnh nền
-        CalculateBounds();
     }
 
     private void CalculateBounds()
@@ -79,6 +76,8 @@ public class MovementHandler : MonoBehaviour
 
     public void FixedUpdateMovement()
     {
+        // Tìm giới hạn tổng thể từ các ảnh nền
+        CalculateBounds();
         if (moveDirection != Vector2.zero)
         {
             float currentSpeed = baseSpeed * currentSpeedMultiplier;
@@ -86,6 +85,7 @@ public class MovementHandler : MonoBehaviour
 
             // Giới hạn vị trí nhân vật
             newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
+            newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, float.MaxValue);
 
             rb.MovePosition(newPosition);
         }

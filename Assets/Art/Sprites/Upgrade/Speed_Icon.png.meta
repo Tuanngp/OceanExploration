@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 540bdb94e9c35944597d2ada27758ecb
+guid: 61545f3a614f34f42a5a5689cd8bb178
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2540028914066445034
-    second: Ship6_0
+      213: -4380117528322894846
+    second: Speed_Icon_0
+  - first:
+      213: -5821305256048404506
+    second: Speed_Icon_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +51,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 12
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ship6_0
+      name: Speed_Icon_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 26
-        width: 119
-        height: 77
+        x: 0
+        y: 0
+        width: 92
+        height: 114
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 61d29d9092100ccd0800000000000000
-      internalID: -2540028914066445034
+      spriteID: 2041ad99052b633c0800000000000000
+      internalID: -4380117528322894846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_Icon_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 59
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e7de1456b1963fa0800000000000000
+      internalID: -5821305256048404506
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 005789c6c58a3824c9dc4a3b08717df0
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ship6_0: -2540028914066445034
+      Speed_Icon_0: -4380117528322894846
+      Speed_Icon_1: -5821305256048404506
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
