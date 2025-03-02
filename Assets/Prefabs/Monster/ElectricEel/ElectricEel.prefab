@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 7581330166852469204, guid: a480419278791ac4ba103a40d94bc2e3, type: 3}
   speed: 5
+  maxMonsters: 0
+  monsterProgress: {fileID: 4186300263447050855, guid: 4acc092e385683a499c3ad24daff5803, type: 3}
 --- !u!61 &9087070022959047363
 BoxCollider2D:
   m_ObjectHideFlags: 0
