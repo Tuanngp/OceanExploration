@@ -16,23 +16,23 @@ public class RandomMonsters : MonoBehaviour
             return;
         }
 
-        SpawnRandomMonster(); // Luôn spawn ngẫu nhiên mỗi lần có quái vật mới
+        // SpawnRandomMonster(); // Luôn spawn ngẫu nhiên mỗi lần có quái vật mới
     }
 
-    private void SpawnRandomMonster()
-    {
-        if (monsterPrefabs.Count == 0) return;
+    // private void SpawnRandomMonster()
+    // {
+    //     if (monsterPrefabs.Count == 0) return;
 
-        // Nếu Model đã có quái vật, xóa đi để spawn cái mới
-        foreach (Transform child in modelTransform)
-        {
-            Destroy(child.gameObject);
-        }
+    //     // Nếu Model đã có quái vật, xóa đi để spawn cái mới
+    //     foreach (Transform child in modelTransform)
+    //     {
+    //         Destroy(child.gameObject);
+    //     }
 
-        int randomIndex = Random.Range(0, monsterPrefabs.Count);
-        GameObject selectedMonster = monsterPrefabs[randomIndex];
+    //     int randomIndex = Random.Range(0, monsterPrefabs.Count);
+    //     GameObject selectedMonster = monsterPrefabs[randomIndex];
 
-        currentMonster = Instantiate(selectedMonster, modelTransform.position, Quaternion.identity);
-        currentMonster.transform.SetParent(modelTransform);
-    }
+    //     currentMonster = Instantiate(selectedMonster, modelTransform.position, Quaternion.identity);
+    //     currentMonster.transform.SetParent(modelTransform);
+    // }
 }

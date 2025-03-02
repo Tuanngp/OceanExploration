@@ -3,17 +3,11 @@ using UnityEngine.UI;
 
 public class MonsterProgress : MonoBehaviour
 {
-    private Slider slider;
-
-    void Start()
-    {
-        slider = GetComponent<Slider>();
-    }
-
+    public Slider progressBar;
     public void UpdateProgress(int monstersKilled, int totalMonsters)
     {
-        slider.value = (float)monstersKilled / totalMonsters;
-
+        progressBar.value = (float)monstersKilled / totalMonsters;
+        Debug.Log("progressBar.value: " + progressBar.value);
         if (monstersKilled >= totalMonsters)
         {
             Debug.Log("Hoàn thành mục tiêu! 🏆");

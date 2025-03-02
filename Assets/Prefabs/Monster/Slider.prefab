@@ -307,7 +307,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2594854044972593621}
   - component: {fileID: 5104892317347103780}
-  - component: {fileID: 4186300263447050855}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -388,16 +387,3 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4186300263447050855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9185199134600786561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34456aec162d314ba8794d75478b8c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progressBar: {fileID: 5104892317347103780}

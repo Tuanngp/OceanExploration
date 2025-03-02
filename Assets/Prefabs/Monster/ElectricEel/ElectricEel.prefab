@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 5167947737919563440}
   - component: {fileID: 4635560581173273045}
   - component: {fileID: 5292896945761568002}
-  - component: {fileID: 3631928038339925956}
   - component: {fileID: 9087070022959047363}
+  - component: {fileID: -2324557362163954802}
+  - component: {fileID: -946262617561048642}
+  - component: {fileID: 2951876277981675855}
   m_Layer: 0
   m_Name: ElectricEel
   m_TagString: Enemy
@@ -112,22 +114,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3631928038339925956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6297412548689131863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95cdf51c73a0ba04787745673ba39fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 7581330166852469204, guid: a480419278791ac4ba103a40d94bc2e3, type: 3}
-  speed: 5
-  maxMonsters: 0
-  monsterProgress: {fileID: 4186300263447050855, guid: 4acc092e385683a499c3ad24daff5803, type: 3}
 --- !u!61 &9087070022959047363
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -174,3 +160,41 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.48, y: 0.48}
   m_EdgeRadius: 0
+--- !u!114 &-2324557362163954802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297412548689131863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a28b28515454434da62430881bce822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-946262617561048642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297412548689131863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19397e05411c0da4f853c7addcd7a8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7581330166852469204, guid: a480419278791ac4ba103a40d94bc2e3, type: 3}
+  speed: 5
+--- !u!114 &2951876277981675855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297412548689131863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cdf51c73a0ba04787745673ba39fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,23 +1,30 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class SpawnMonsters : MonoBehaviour
 {
-    public List<GameObject> monsterPrefabs;
-    public Transform submarine;
-    public float minY = -60f, maxY = 0f;
-    public int maxMonsters = 5;
-    public float fixedZ = 0f;
-    private List<GameObject> spawnedMonsters = new List<GameObject>();
-    public MonsterProgress monsterProgress;
-    void Update()
+    public List<GameObject> monsterPrefabs; // Danh sách quái vật
+    public Transform submarine; // Tàu ngầm (mục tiêu)
+    public float minY = -60f, maxY = 0f; // Giới hạn vị trí spawn theo trục Y
+    public static int maxMonsters = 10; // Số lượng tối đa quái vật spawn
+    public float fixedZ = 0f; // Giữ quái vật ở Z cố định
+
+    private List<GameObject> spawnedMonsters = new List<GameObject>(); // Danh sách quái vật đã spawn
+
+    void Start()
     {
-        if (spawnedMonsters.Count < maxMonsters)
+        SpawnRandomMonsters(); // Spawn quái vật ngay khi bắt đầu
+    }
+
+    void SpawnRandomMonsters()
+    {
+        if (monsterPrefabs.Count == 0) return;
+
+        while (spawnedMonsters.Count < maxMonsters) // Đảm bảo spawn đúng số lượng
         {
             SpawnMonster();
         }
-        UpdateHealthBarPositions();
     }
 
     void SpawnMonster()
@@ -30,34 +37,17 @@ public class SpawnMonsters : MonoBehaviour
         float randomY = Random.Range(minY, maxY);
         Vector3 randomSpawnPosition = new Vector3(randomX, randomY, fixedZ);
 
-        int randomIndex = Random.Range(0, monsterPrefabs.Count);
+        int randomIndex = Random.Range(0, monsterPrefabs.Count); // Chọn quái vật ngẫu nhiên
         GameObject selectedMonster = monsterPrefabs[randomIndex];
 
         GameObject spawnedMonster = Instantiate(selectedMonster, randomSpawnPosition, Quaternion.identity);
-
         spawnedMonsters.Add(spawnedMonster);
 
-        MonsterAI monsterAI = spawnedMonster.GetComponent<MonsterAI>();
-        if (monsterAI != null)
+        // Gán tàu ngầm làm mục tiêu nếu có script MonsterMovement
+        MonsterMovement monsterMovement = spawnedMonster.GetComponent<MonsterMovement>();
+        if (monsterMovement != null)
         {
-            monsterAI.target = submarine;
-            monsterAI.monsterProgress = monsterProgress;
-        }
-
-    }
-
-    void UpdateHealthBarPositions()
-    {
-        foreach (GameObject monster in spawnedMonsters)
-        {
-            if (monster == null) continue;
-
-            Transform healthBar = monster.transform.Find("HealthBarMonster");
-            if (healthBar != null)
-            {
-                healthBar.position = monster.transform.position + new Vector3(0f, -12f, 0f);
-                healthBar.rotation = Quaternion.Euler(0, 0, 0);
-            }
+            monsterMovement.target = submarine;
         }
     }
 }

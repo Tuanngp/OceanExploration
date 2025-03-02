@@ -11,8 +11,11 @@ GameObject:
   - component: {fileID: 8813407444687902931}
   - component: {fileID: 3219279912335034442}
   - component: {fileID: 1230922238411931376}
-  - component: {fileID: 6372873273393733135}
+  - component: {fileID: 5889504346543808269}
   - component: {fileID: -5117143652901558581}
+  - component: {fileID: -7154580312740678220}
+  - component: {fileID: 4967228859345579142}
+  - component: {fileID: -8703104493448388559}
   m_Layer: 0
   m_Name: Devil_fish
   m_TagString: Enemy
@@ -112,7 +115,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6372873273393733135
+--- !u!114 &5889504346543808269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,13 +124,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5145738384052218603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95cdf51c73a0ba04787745673ba39fca, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a28b28515454434da62430881bce822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 7581330166852469204, guid: a480419278791ac4ba103a40d94bc2e3, type: 3}
-  speed: 4
-  maxMonsters: 0
-  monsterProgress: {fileID: 4186300263447050855, guid: 4acc092e385683a499c3ad24daff5803, type: 3}
 --- !u!61 &-5117143652901558581
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -174,3 +173,41 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.22}
   m_EdgeRadius: 0
+--- !u!114 &-7154580312740678220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145738384052218603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cdf51c73a0ba04787745673ba39fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4967228859345579142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145738384052218603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19397e05411c0da4f853c7addcd7a8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7581330166852469204, guid: a480419278791ac4ba103a40d94bc2e3, type: 3}
+  speed: 5
+--- !u!114 &-8703104493448388559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145738384052218603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a28b28515454434da62430881bce822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
