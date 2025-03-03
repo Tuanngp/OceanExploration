@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class HealthBarController : MonoBehaviour
 {
+    public static HealthBarController Instance { get; private set; }
+
     [Header("UI Elements")]
     public RectTransform healthBar;
     [Header("Health Settings")]
@@ -25,6 +27,20 @@ public class HealthBarController : MonoBehaviour
 
     [Header("Damage Settings")]
     public float damagePerHit = 10f;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         currentHealth = maxHealth;
