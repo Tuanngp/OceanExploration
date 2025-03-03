@@ -10,6 +10,8 @@ public class SpawnMonsters : MonoBehaviour
     public float minY = -60f, maxY = 0f;
     public float fixedZ = 0f;
 
+    public static List<MonsterAI> ActiveMonsters = new List<MonsterAI>();
+
     void Start()
     {
         SpawnAllMonsters();
@@ -29,6 +31,7 @@ public class SpawnMonsters : MonoBehaviour
             if (monsterAI != null)
             {
                 monsterAI.target = submarine;
+                ActiveMonsters.Add(monsterAI); // << LƯU LẠI QUÁI VỪA SPAWN
             }
         }
     }

@@ -1,22 +1,31 @@
 fileFormatVersion: 2
-guid: 7b6b30de77e65074f8c7f2866206d092
+guid: 0a033a3bc16f1e14f8518a542655345c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2678394577819576460
-    second: Speed_0
+      213: -5168819705888378091
+    second: 481344008_1786314892153473_2821218857440472733_n_0
   - first:
-      213: -1472387147731993066
-    second: Speed_1
+      213: -6927947455527796417
+    second: 481344008_1786314892153473_2821218857440472733_n_1
   - first:
-      213: -8101740824009546886
-    second: Speed_2
+      213: -227761797454431640
+    second: 481344008_1786314892153473_2821218857440472733_n_2
   - first:
-      213: -6664115507763579762
-    second: Speed_3
+      213: 1214124350424659159
+    second: 481344008_1786314892153473_2821218857440472733_n_3
   - first:
-      213: 5278593960314521437
-    second: Speed_4
+      213: 870913015223340459
+    second: 481344008_1786314892153473_2821218857440472733_n_4
+  - first:
+      213: 2069685141253616882
+    second: 481344008_1786314892153473_2821218857440472733_n_5
+  - first:
+      213: -2510513039639694190
+    second: 481344008_1786314892153473_2821218857440472733_n_6
+  - first:
+      213: 9093448812914999572
+    second: 481344008_1786314892153473_2821218857440472733_n_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,111 +134,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Speed_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4775bbc725e64dad0800000000000000
-      internalID: -2678394577819576460
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Speed_1
+      name: rareCoin_0
       rect:
         serializedVersion: 2
         x: 48
-        y: 0
-        width: 47
-        height: 44
+        y: 15
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 61e759fa0b7019be0800000000000000
-      internalID: -1472387147731993066
+      spriteID: fd8e4eda38ca2df43981e294c6a1bbea
+      internalID: -854294965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Speed_2
+      name: rareCoin_1
       rect:
         serializedVersion: 2
-        x: 97
-        y: 0
-        width: 41
-        height: 44
+        x: 135
+        y: 16
+        width: 64
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a7361aa35a5d09f80800000000000000
-      internalID: -8101740824009546886
+      spriteID: aaef32df15aa6da44be534f07140a6c2
+      internalID: -715553136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Speed_3
+      name: rareCoin_2
       rect:
         serializedVersion: 2
-        x: 138
-        y: 0
-        width: 41
-        height: 44
+        x: 217
+        y: 16
+        width: 54
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e847491f04e4483a0800000000000000
-      internalID: -6664115507763579762
+      spriteID: 4aa46a3f403c4cd47b7b7b27a06e3cb7
+      internalID: 1723883761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Speed_4
+      name: rareCoin_3
       rect:
         serializedVersion: 2
-        x: 179
-        y: 0
-        width: 44
-        height: 44
+        x: 298
+        y: 15
+        width: 14
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d57c11e5d35514940800000000000000
-      internalID: 5278593960314521437
+      spriteID: 8ec72f05de8569f4b93926bdab0d3618
+      internalID: -1797533176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rareCoin_4
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 15
+        width: 54
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da4902831294e234bb93f027b5693605
+      internalID: -1536418420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rareCoin_5
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 75
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f825f63b2db41d42b8a626044fedd8c
+      internalID: -552157545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rareCoin_6
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 16
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce35e38c4ed33804d8ac67ffe0caf202
+      internalID: 769004735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rareCoin_7
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 15
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8a02db54e784449bfcf759f4181434
+      internalID: 1820523106
       vertices: []
       indices: 
       edges: []
@@ -238,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9ef7e7b6dc1b9064e958e0fb454c6fc8
     internalID: 0
     vertices: []
     indices: 
@@ -248,11 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Speed_0: -2678394577819576460
-      Speed_1: -1472387147731993066
-      Speed_2: -8101740824009546886
-      Speed_3: -6664115507763579762
-      Speed_4: 5278593960314521437
+      rareCoin_0: -854294965
+      rareCoin_1: -715553136
+      rareCoin_2: 1723883761
+      rareCoin_3: -1797533176
+      rareCoin_4: -1536418420
+      rareCoin_5: -552157545
+      rareCoin_6: 769004735
+      rareCoin_7: 1820523106
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
