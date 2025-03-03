@@ -4,13 +4,13 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float lifetime = 3f;
     [SerializeField] private float damage = 10;
-    private Animator animator;
     private bool isHit = false;
-
+    private Animator animator;
+    private UpgradeManager upgradeManager;
     private void Start()
     {
-        // Tự hủy sau một thời gian
         animator = GetComponent<Animator>();
+        upgradeManager = GameObject.Find("Submarine").GetComponent<UpgradeManager>();
         Destroy(gameObject, lifetime);
     }
 
@@ -26,8 +26,10 @@ public class Projectile : MonoBehaviour
             if (other.TryGetComponent(out MonsterAI target))
             {
                 isHit = true;
-                animator.SetTrigger("Hit");
                 target.TakeDamage(damage);
+                Debug.Log("Hit enemy" + upgradeManager.selectedShipIndex);
+                animator.SetInteger("impact", upgradeManager.selectedShipIndex);
+                Debug.Log("Get impact" + animator.GetInteger("impact"));
             }
             GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             Destroy(gameObject, 0.45f);

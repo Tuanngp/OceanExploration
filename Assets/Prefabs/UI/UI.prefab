@@ -1646,7 +1646,6 @@ GameObject:
   - component: {fileID: 7047029697335416096}
   - component: {fileID: 2127332489481925755}
   - component: {fileID: 5430132192452349803}
-  - component: {fileID: 5607586094510064762}
   m_Layer: 5
   m_Name: UpdatePanel
   m_TagString: Untagged
@@ -1715,40 +1714,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5607586094510064762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3179191591933718372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a528c4e258c93c0499b58b45a556cb8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradePanel: {fileID: 0}
-  resourceText: {fileID: 0}
-  speedButton: {fileID: 0}
-  healthButton: {fileID: 0}
-  weaponButton: {fileID: 0}
-  speedCostText: {fileID: 0}
-  healthCostText: {fileID: 0}
-  weaponCostText: {fileID: 0}
-  speedValueText: {fileID: 0}
-  healthValueText: {fileID: 0}
-  weaponValueText: {fileID: 0}
-  speedLevelText: {fileID: 0}
-  healthLevelText: {fileID: 0}
-  weaponLevelText: {fileID: 0}
-  closeButton: {fileID: 0}
-  previousShipButton: {fileID: 0}
-  nextShipButton: {fileID: 0}
-  shipPreviewImage: {fileID: 0}
-  shipPriceText: {fileID: 0}
-  buyOrSelectButton: {fileID: 0}
-  buyOrSelectButtonText: {fileID: 0}
-  upgradeManager: {fileID: 0}
 --- !u!1 &3233504564893915106
 GameObject:
   m_ObjectHideFlags: 0

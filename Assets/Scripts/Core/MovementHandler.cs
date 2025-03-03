@@ -19,12 +19,14 @@ public class MovementHandler : MonoBehaviour
     private float currentSpeedMultiplier = 1f;
     private float playerHalfWidth, playerHalfHeight;
     private HealthBarController healthBarController;
+    private UpgradeManager upgradeManager;
     private void Awake() => rb = GetComponent<Rigidbody2D>();
 
     private void Start()
     {
         healthBarController = GetComponent<HealthBarController>();
         animator = GetComponent<Animator>();
+        upgradeManager = GetComponent<UpgradeManager>();
         // Lấy kích thước nhân vật
         SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
         if (playerRenderer != null)
@@ -57,7 +59,7 @@ public class MovementHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            animator.SetTrigger("Boost");
+            animator.SetTrigger("boost" + upgradeManager.selectedShipIndex);
             if (healthBarController.currentMana <= 0f) return;
             currentSpeedMultiplier = Mathf.Min(
                 currentSpeedMultiplier + accelerationRate * Time.deltaTime,
