@@ -10,6 +10,7 @@ public class MonsterAI : MonoBehaviour
     private float currentHealth = 100;
     private bool isMoving = false;
     private bool hasSpottedPlayer = false;
+    public GameObject powerUpPrefab;  // Kéo viên thuốc vô đây (Inspector)
     [SerializeField] private float damageResistance = 0f;
     void Start()
     {
@@ -23,7 +24,15 @@ public class MonsterAI : MonoBehaviour
             if (!hasSpottedPlayer && IsTargetVisible())
             {
                 hasSpottedPlayer = true;
-                Debug.Log("Monster đã phát hiện tàu, bắt đầu đuổi theo!");
+                if (WarningSystem.Instance != null)
+                {
+                    WarningSystem.Instance.ShowWarning();
+                    Debug.Log("Monster đã phát hiện tàu, bắt đầu đuổi theo!");
+                }
+                else
+                {
+                    Debug.LogError("WarningSystem chưa khởi tạo! Check lại scene.");
+                }
             }
 
             if (hasSpottedPlayer)
@@ -105,7 +114,24 @@ public class MonsterAI : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger("death");
+
+        // Xóa khỏi danh sách active monsters
+        SpawnMonsters.ActiveMonsters.Remove(this);
+
+        if (Random.value < 0.2f)
+        {
+            SpawnPowerUp();
+        }
+
         Destroy(gameObject, 0.1f);
+    }
+
+    private void SpawnPowerUp()
+    {
+        GameObject powerUp = Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
+        float randomScale = Random.Range(1.5f, 3f);
+        powerUp.transform.localScale = new Vector3(randomScale, randomScale, 1f);
+        powerUp.AddComponent<PowerUpRotation>();  // Xoay nhẹ
     }
 
     private void OnTriggerEnter2D(Collider2D other)
