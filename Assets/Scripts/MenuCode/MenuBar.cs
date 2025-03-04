@@ -5,9 +5,8 @@ using UnityEngine.UI;
 public class MenuBar : MonoBehaviour
 {
 
-    public Button[] mapBtns;
-    private int selectedMap;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Button[] menuBtns;
+    
     public void PlayGame()
     {
         SceneManager.LoadScene("MapScene");
@@ -26,12 +25,12 @@ public class MenuBar : MonoBehaviour
     }
     public void OnHoverEnter(int mapIndex)
     {       
-            mapBtns[mapIndex].transform.localScale = Vector3.one * 1.1f; // Phóng to nhẹ     
+            menuBtns[mapIndex].transform.localScale = Vector3.one * 1.1f; // Phóng to nhẹ     
     }
 
     public void OnHoverExit(int mapIndex)
     {
-            mapBtns[mapIndex].transform.localScale = Vector3.one; // Trở lại bình thường
+            menuBtns[mapIndex].transform.localScale = Vector3.one; // Trở lại bình thường
     }
 
 
