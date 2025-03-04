@@ -42,7 +42,6 @@ public class MonsterMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             monsterAnimation?.SetMoving(true);
 
-            // Xoay quái vật theo hướng di chuyển
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             if (angle > 90f || angle < -90f)
             {
