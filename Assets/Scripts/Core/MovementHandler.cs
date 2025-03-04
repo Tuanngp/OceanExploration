@@ -9,22 +9,24 @@ public class MovementHandler : MonoBehaviour
     private Animator animator;
 
     [Header("Movement Settings")]
-    [SerializeField] private float baseSpeed = 20f;
+    [SerializeField] public float baseSpeed = 20f;
     [SerializeField] private float accelerationRate = 2f;
     [SerializeField] private float decelerationRate = 1f;
-    [SerializeField] private float maxSpeedMultiplier = 2f;
+    [SerializeField] public float maxSpeedMultiplier = 2f;
 
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     private float currentSpeedMultiplier = 1f;
     private float playerHalfWidth, playerHalfHeight;
     private HealthBarController healthBarController;
+    private UpgradeManager upgradeManager;
     private void Awake() => rb = GetComponent<Rigidbody2D>();
 
     private void Start()
     {
         healthBarController = GetComponent<HealthBarController>();
         animator = GetComponent<Animator>();
+        upgradeManager = GetComponent<UpgradeManager>();
         // Lấy kích thước nhân vật
         SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
         if (playerRenderer != null)
@@ -32,9 +34,6 @@ public class MovementHandler : MonoBehaviour
             playerHalfWidth = playerRenderer.bounds.extents.x;
             playerHalfHeight = playerRenderer.bounds.extents.y;
         }
-
-        // Tìm giới hạn tổng thể từ các ảnh nền
-        CalculateBounds();
     }
 
     private void CalculateBounds()
@@ -60,7 +59,7 @@ public class MovementHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            animator.SetTrigger("Boost");
+            animator.SetTrigger("boost" + upgradeManager.selectedShipIndex);
             if (healthBarController.currentMana <= 0f) return;
             currentSpeedMultiplier = Mathf.Min(
                 currentSpeedMultiplier + accelerationRate * Time.deltaTime,
@@ -79,6 +78,8 @@ public class MovementHandler : MonoBehaviour
 
     public void FixedUpdateMovement()
     {
+        // Tìm giới hạn tổng thể từ các ảnh nền
+        CalculateBounds();
         if (moveDirection != Vector2.zero)
         {
             float currentSpeed = baseSpeed * currentSpeedMultiplier;
@@ -86,6 +87,7 @@ public class MovementHandler : MonoBehaviour
 
             // Giới hạn vị trí nhân vật
             newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
+            newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, float.MaxValue);
 
             rb.MovePosition(newPosition);
         }

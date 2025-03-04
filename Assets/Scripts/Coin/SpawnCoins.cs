@@ -3,29 +3,67 @@ using UnityEngine;
 
 public class SpawnCoins : MonoBehaviour
 {
-    public GameObject coinPrefab;
-    public int numberOfCoins = 50;
-    public float minY = -50f, maxY = -10f;
-    public float offsetX = 50f; // Khoảng cách X để spawn quanh tàu
-    public Transform submarine; // Tham chiếu đến tàu ngầm
-    public float spawnInterval = 0.5f; // Thời gian giữa mỗi lần tạo coin
+    public GameObject coinPrefab;           // Coin bình thường
+    public GameObject rareCoinPrefab;       // Coin đặc biệt
+    public int numberOfCoins = 30;          // Tổng số coin thường cần spawn
+    public int numberOfRareCoins = 10;      // Tổng số rare coin cần spawn
+    public float minY = -50f, maxY = -10f;  // Giới hạn Y để spawn coin
+    public float offsetX = 50f;              // Khoảng cách spawn theo X
+    public Transform submarine;              // Tham chiếu tới tàu ngầm
+
+    public float normalCoinInterval = 0.5f;  // Khoảng delay giữa mỗi coin thường
+    public float rareCoinInterval = 2f;      // Khoảng delay giữa mỗi rare coin (tùy độ hiếm)
+
+    private int normalCoinsSpawned = 0;
+    private int rareCoinsSpawned = 0;
 
     void Start()
     {
-        StartCoroutine(SpawnCoinsGradually());
+        // Chạy 2 Coroutine song song, mỗi thằng tự lo việc spawn của mình
+        StartCoroutine(SpawnNormalCoins());
+        StartCoroutine(SpawnRareCoins());
     }
 
-    IEnumerator SpawnCoinsGradually()
+    IEnumerator SpawnNormalCoins()
     {
-        for (int i = 0; i < numberOfCoins; i++)
+        while (normalCoinsSpawned < numberOfCoins)
         {
-            float randomX = submarine.position.x + Random.Range(-offsetX, offsetX);
-            float randomY = Random.Range(minY, maxY);
-            Vector2 randomPosition = new Vector2(randomX, randomY);
-
-            Instantiate(coinPrefab, randomPosition, Quaternion.identity);
-
-            yield return new WaitForSeconds(spawnInterval); // Đợi trước khi tạo coin tiếp theo
+            SpawnCoin(coinPrefab);
+            normalCoinsSpawned++;
+            yield return new WaitForSeconds(normalCoinInterval);
         }
+    }
+
+    IEnumerator SpawnRareCoins()
+    {
+        while (rareCoinsSpawned < numberOfRareCoins)
+        {
+            SpawnRareCoin();
+            rareCoinsSpawned++;
+            yield return new WaitForSeconds(rareCoinInterval);
+        }
+    }
+
+    void SpawnCoin(GameObject coinType)
+    {
+        float randomX = submarine.position.x + Random.Range(-offsetX, offsetX);
+        float randomY = Random.Range(minY, maxY);
+        Vector2 position = new Vector2(randomX, randomY);
+        Instantiate(coinType, position, Quaternion.identity);
+    }
+
+    void SpawnRareCoin()
+    {
+        if (SpawnMonsters.ActiveMonsters.Count == 0)
+        {
+            Debug.LogWarning("Không có quái nào để spawn rare coin, bỏ qua.");
+            return;
+        }
+
+        MonsterAI randomMonster = SpawnMonsters.ActiveMonsters[Random.Range(0, SpawnMonsters.ActiveMonsters.Count)];
+        Vector2 spawnPos = (Vector2)randomMonster.transform.position + Random.insideUnitCircle * 10f;
+        Instantiate(rareCoinPrefab, spawnPos, Quaternion.identity);
+
+        Debug.Log("Rare coin spawned near monster: " + randomMonster.name);
     }
 }

@@ -36,7 +36,7 @@ public class InfiniteBackground : MonoBehaviour
         // Nếu nhân vật vượt qua phần nền bên trái, di chuyển phần nền bên phải ra phía sau
         else if (player.position.x < leftMost.position.x + backgroundWidth / 2)
         {
-            rightMost.position = new Vector3(leftMost.position.x - backgroundWidth, rightMost.position.y, rightMost.position.z);
+            // rightMost.position = new Vector3(leftMost.position.x - backgroundWidth, rightMost.position.y, rightMost.position.z);
         }
     }
 }
