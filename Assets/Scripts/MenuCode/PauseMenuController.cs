@@ -40,6 +40,6 @@ public class PauseMenuController : MonoBehaviour
     public void BackToMenu()
     {
         Time.timeScale = 1f; // Reset lại thời gian trước khi chuyển Scene
-        SceneManager.LoadScene("MenuScene"); // Đổi tên Scene nếu cần
+        SceneManager.LoadScene("MenuScene"); 
     }
 }
