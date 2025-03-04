@@ -45,9 +45,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 1138259451
-    locked: 0
   - name: Effects
     uniqueID: 3470051623
     locked: 0
@@ -62,6 +59,24 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1704173137
+    locked: 0
+  - name: Stone
+    uniqueID: 1443841329
+    locked: 0
+  - name: Sand
+    uniqueID: 568619563
+    locked: 0
+  - name: Coral
+    uniqueID: 3333731973
+    locked: 0
+  - name: Fish
+    uniqueID: 3823400071
+    locked: 0
+  - name: Player
+    uniqueID: 2295972507
+    locked: 0
+  - name: UI
+    uniqueID: 1138259451
     locked: 0
   m_RenderingLayers:
   - Default
