@@ -9,11 +9,11 @@ public class MonsterAI : MonoBehaviour
     private static MonsterProgress monsterProgress;
 
     private bool isDead = false;
-    private int maxHealth = 100;
-    private float currentHealth = 100f;
+    protected int maxHealth = 100;
+    protected float currentHealth = 100;
     private static int killCount = 0;
 
-    public GameObject powerUpPrefab;  // Kéo viên thuốc vô đây (Inspector)
+    public GameObject powerUpPrefab; 
     [SerializeField] private float damageResistance = 0f;
     void Start()
     {
@@ -50,16 +50,21 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         isDead = true;
         monsterAnimation?.TriggerDeath();
 
         killCount++;
         Debug.Log(killCount);
-        monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters + 1);
+        monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters);
 
-        Destroy(gameObject, 0.8f);
+        Destroy(gameObject, 0.5f);
+    }
+
+    public static int GetKillCount()
+    {
+        return killCount;
     }
 
     private void SpawnPowerUp()

@@ -3,24 +3,37 @@ using System.Collections.Generic;
 
 public class SpawnMonsters : MonoBehaviour
 {
-    public List<GameObject> monsterPrefabs; // Danh sách quái vật
-    public Transform submarine; // Tàu ngầm (mục tiêu)
-    public float minY = -60f, maxY = 0f; // Giới hạn vị trí spawn theo trục Y
-    public static int maxMonsters = 10; // Số lượng tối đa quái vật spawn
-    public float fixedZ = 0f; // Giữ quái vật ở Z cố định
+    public List<GameObject> monsterPrefabs;
+    public GameObject bossPrefab;
+    public Transform submarine;
+    public float minY = -60f, maxY = 0f;
+    public static int maxMonsters = 2;
+    public float fixedZ = 0f;
 
     public static List<MonsterMovement> ActiveMonsters = new List<MonsterMovement>();
-    private List<GameObject> spawnedMonsters = new List<GameObject>(); // Danh sách quái vật đã spawn
+    private List<GameObject> spawnedMonsters = new List<GameObject>();
+
+    private bool bossSpawned = false; 
 
     void Start()
     {
         SpawnRandomMonsters();
     }
+
+    void Update()
+    {
+        if (!bossSpawned && MonsterAI.GetKillCount() >= maxMonsters) 
+        {
+            SpawnBoss();
+            bossSpawned = true;
+        }
+    }
+
     void SpawnRandomMonsters()
     {
         if (monsterPrefabs.Count == 0) return;
 
-        while (spawnedMonsters.Count < maxMonsters) // Đảm bảo spawn đúng số lượng
+        while (spawnedMonsters.Count < maxMonsters)
         {
             SpawnMonster();
         }
@@ -36,7 +49,7 @@ public class SpawnMonsters : MonoBehaviour
         float randomY = Random.Range(minY, maxY);
         Vector3 randomSpawnPosition = new Vector3(randomX, randomY, fixedZ);
 
-        int randomIndex = Random.Range(0, monsterPrefabs.Count); // Chọn quái vật ngẫu nhiên
+        int randomIndex = Random.Range(0, monsterPrefabs.Count);
         GameObject selectedMonster = monsterPrefabs[randomIndex];
 
         GameObject spawnedMonster = Instantiate(selectedMonster, randomSpawnPosition, Quaternion.identity);
@@ -47,6 +60,19 @@ public class SpawnMonsters : MonoBehaviour
         {
             monsterMovement.target = submarine;
             ActiveMonsters.Add(monsterMovement);
+        }
+    }
+
+    void SpawnBoss()
+    {
+        if (bossPrefab == null) return;
+
+        Vector3 bossSpawnPosition = new Vector3(submarine.position.x + 120, Random.Range(minY, maxY), fixedZ);
+        GameObject spawnedBoss = Instantiate(bossPrefab, bossSpawnPosition, Quaternion.identity);
+        MonsterMovement monsterMovement = spawnedBoss.GetComponent<MonsterMovement>();
+        if (monsterMovement != null)
+        {
+            monsterMovement.target = submarine;
         }
     }
 }
