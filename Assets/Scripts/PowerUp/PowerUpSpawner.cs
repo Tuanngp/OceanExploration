@@ -25,7 +25,7 @@ public class PowerUpSpawner : MonoBehaviour
             return;
         }
 
-        MonsterAI randomMonster = SpawnMonsters.ActiveMonsters[Random.Range(0, SpawnMonsters.ActiveMonsters.Count)];
+        MonsterMovement randomMonster = SpawnMonsters.ActiveMonsters[Random.Range(0, SpawnMonsters.ActiveMonsters.Count)];
         Vector2 spawnPosition = (Vector2)randomMonster.transform.position + Random.insideUnitCircle * 25f;
         GameObject powerUp = Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity);
         float randomScale = Random.Range(1.5f, 3f);  // Viên thuốc to nhỏ random
