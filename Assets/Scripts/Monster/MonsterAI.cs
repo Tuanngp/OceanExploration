@@ -4,8 +4,8 @@
 [RequireComponent(typeof(MonsterMovement))]
 public class MonsterAI : MonoBehaviour
 {
-    private MonsterAnimation monsterAnimation;
-    private MonsterMovement monsterMovement;
+    protected MonsterAnimation monsterAnimation;
+    protected MonsterMovement monsterMovement;
     private static MonsterProgress monsterProgress;
 
     private bool isDead = false;
@@ -28,7 +28,7 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         float reducedDamage = damage * (1f - damageResistance);
         currentHealth -= reducedDamage;
@@ -59,7 +59,7 @@ public class MonsterAI : MonoBehaviour
         Debug.Log(killCount);
         monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters);
 
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 0.75f);
     }
 
     public static int GetKillCount()

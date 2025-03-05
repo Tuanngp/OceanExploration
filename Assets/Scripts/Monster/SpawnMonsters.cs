@@ -7,7 +7,7 @@ public class SpawnMonsters : MonoBehaviour
     public GameObject bossPrefab;
     public Transform submarine;
     public float minY = -60f, maxY = 0f;
-    public static int maxMonsters = 2;
+    [SerializeField] public static int maxMonsters = 2;
     public float fixedZ = 0f;
 
     public static List<MonsterMovement> ActiveMonsters = new List<MonsterMovement>();
