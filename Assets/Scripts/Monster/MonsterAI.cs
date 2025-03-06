@@ -59,7 +59,7 @@ public class MonsterAI : MonoBehaviour
         Debug.Log(killCount);
         monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters);
 
-        Destroy(gameObject, 0.75f);
+        Destroy(gameObject, 0.8f);
     }
 
     public static int GetKillCount()
