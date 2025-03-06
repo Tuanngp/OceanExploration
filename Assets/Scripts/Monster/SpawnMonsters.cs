@@ -44,7 +44,7 @@ public class SpawnMonsters : MonoBehaviour
         if (monsterPrefabs.Count == 0) return;
 
         float minX = submarine.position.x;
-        float maxX = submarine.position.x + 1000;
+        float maxX = submarine.position.x + 3000;
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
         Vector3 randomSpawnPosition = new Vector3(randomX, randomY, fixedZ);

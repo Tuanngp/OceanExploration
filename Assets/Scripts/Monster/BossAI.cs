@@ -10,7 +10,7 @@ public class BossAI : MonsterAI
         monsterAnimation = GetComponent<MonsterAnimation>();
         monsterMovement = GetComponent<MonsterMovement>();
 
-        maxHealth = 500;
+        maxHealth = 5000;
         currentHealth = maxHealth;
         healthBar = GetComponentInChildren<HealthBarBoss>(); // Tìm health bar trong con
     }
