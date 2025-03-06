@@ -1,104 +1,41 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(MonsterAnimation))]
+[RequireComponent(typeof(MonsterMovement))]
 public class MonsterAI : MonoBehaviour
 {
-    public Transform target;
-    public float speed = 5f;
-    private Animator animator;
+    protected MonsterAnimation monsterAnimation;
+    protected MonsterMovement monsterMovement;
+    private static MonsterProgress monsterProgress;
+
     private bool isDead = false;
-    private float currentHealth = 100;
-    private bool isMoving = false;
-    private bool hasSpottedPlayer = false;
-    public GameObject powerUpPrefab;  // Kéo viên thuốc vô đây (Inspector)
+    protected int maxHealth = 100;
+    protected float currentHealth = 100;
+    private static int killCount = 0;
+
+    public GameObject powerUpPrefab; 
     [SerializeField] private float damageResistance = 0f;
     void Start()
     {
-        animator = GetComponent<Animator>();
-    }
+        monsterAnimation = GetComponent<MonsterAnimation>();
+        monsterMovement = GetComponent<MonsterMovement>();
 
-    void Update()
-    {
-        if (target != null)
+        if (monsterProgress == null)
         {
-            if (!hasSpottedPlayer && IsTargetVisible())
-            {
-                hasSpottedPlayer = true;
-                if (WarningSystem.Instance != null)
-                {
-                    WarningSystem.Instance.ShowWarning();
-                    Debug.Log("Monster đã phát hiện tàu, bắt đầu đuổi theo!");
-                }
-                else
-                {
-                    Debug.LogError("WarningSystem chưa khởi tạo! Check lại scene.");
-                }
-            }
-
-            if (hasSpottedPlayer)
-            {
-                Vector3 direction = (target.position - transform.position).normalized;
-                isMoving = direction.magnitude > 0.01f;
-
-                if (isMoving)
-                {
-                    MoveToTarget();
-                    animator.SetBool("isMoving", true);
-                }
-                else
-                {
-                    animator.SetBool("isMoving", false);
-                }
-            }
-        }
-        else
-        {
-            animator.SetBool("isMoving", false);
+            GameObject progressObj = GameObject.Find("KillProgressBar");
+            if (progressObj != null)
+                monsterProgress = progressObj.GetComponent<MonsterProgress>();
         }
     }
 
-    private void MoveToTarget()
-    {
-        if (target == null) return;
-
-        Vector3 direction = (target.position - transform.position).normalized;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-        if (direction != Vector3.zero)
-        {
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
-    }
-
-    private bool IsTargetVisible()
-    {
-        if (target == null) return false;
-
-        float distance = Vector3.Distance(transform.position, target.position);
-        return distance < 60f;
-    }
-
-    private void ChangeColor(Color newColor)
-    {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        if (sr != null)
-        {
-            sr.color = newColor;
-        }
-    }
-
-    private void ResetColor()
-    {
-        ChangeColor(Color.white);
-    }
-
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         float reducedDamage = damage * (1f - damageResistance);
         currentHealth -= reducedDamage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
         Debug.Log("Monster bị bắn, máu còn lại: " + currentHealth);
-        ChangeColor(Color.red);
+        monsterAnimation?.ChangeColor(Color.red);
 
         if (currentHealth <= 0)
         {
@@ -106,24 +43,28 @@ public class MonsterAI : MonoBehaviour
         }
         else
         {
-            Invoke(nameof(ResetColor), 0.2f);
+            if (monsterAnimation != null)
+            {
+                monsterAnimation?.Invoke(nameof(monsterAnimation.ResetColor), 0.2f);
+            }
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         isDead = true;
-        animator.SetTrigger("death");
+        monsterAnimation?.TriggerDeath();
 
-        // Xóa khỏi danh sách active monsters
-        SpawnMonsters.ActiveMonsters.Remove(this);
+        killCount++;
+        Debug.Log(killCount);
+        monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters);
 
-        if (Random.value < 0.2f)
-        {
-            SpawnPowerUp();
-        }
+        Destroy(gameObject, 0.75f);
+    }
 
-        Destroy(gameObject, 0.1f);
+    public static int GetKillCount()
+    {
+        return killCount;
     }
 
     private void SpawnPowerUp()
@@ -138,14 +79,9 @@ public class MonsterAI : MonoBehaviour
     {
         if (isDead) return;
 
-        if (other.CompareTag("Projectile"))
-        {
-            TakeDamage(10);
-        }
-
         if (other.CompareTag("Player"))
         {
-            animator.SetTrigger("attack");
+            monsterAnimation?.TriggerAttack();
             Debug.Log("Monster's attacking");
         }
     }

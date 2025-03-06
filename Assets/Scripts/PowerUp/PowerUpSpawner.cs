@@ -25,12 +25,27 @@ public class PowerUpSpawner : MonoBehaviour
             return;
         }
 
-        MonsterAI randomMonster = SpawnMonsters.ActiveMonsters[Random.Range(0, SpawnMonsters.ActiveMonsters.Count)];
+        MonsterMovement randomMonster = null;
+        int attempts = 0;
+        while (attempts < 10)
+        {
+            randomMonster = SpawnMonsters.ActiveMonsters[Random.Range(0, SpawnMonsters.ActiveMonsters.Count)];
+            if (randomMonster != null && randomMonster.gameObject != null) break;
+            attempts++;
+        }
+
+        if (randomMonster == null || randomMonster.gameObject == null)
+        {
+            Debug.LogWarning("Không tìm thấy quái vật hợp lệ để spawn power-up!");
+            return;
+        }
+
         Vector2 spawnPosition = (Vector2)randomMonster.transform.position + Random.insideUnitCircle * 25f;
         GameObject powerUp = Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity);
-        float randomScale = Random.Range(1.5f, 3f);  // Viên thuốc to nhỏ random
-        powerUp.transform.localScale = new Vector3(randomScale, randomScale, 1f);
 
+        float randomScale = Random.Range(1.5f, 3f);
+        powerUp.transform.localScale = new Vector3(randomScale, randomScale, 1f);
         powerUp.AddComponent<PowerUpRotation>();  // Tự xoay nhẹ
     }
+
 }

@@ -60,7 +60,7 @@ public class SpawnCoins : MonoBehaviour
             return;
         }
 
-        MonsterAI randomMonster = SpawnMonsters.ActiveMonsters[Random.Range(0, SpawnMonsters.ActiveMonsters.Count)];
+        MonsterMovement randomMonster = SpawnMonsters.ActiveMonsters[Random.Range(0, SpawnMonsters.ActiveMonsters.Count)];
         Vector2 spawnPos = (Vector2)randomMonster.transform.position + Random.insideUnitCircle * 10f;
         Instantiate(rareCoinPrefab, spawnPos, Quaternion.identity);
 

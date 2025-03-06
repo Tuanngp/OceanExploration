@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8131481851021925565}
   - component: {fileID: 212983338206548383}
   - component: {fileID: -7619223739309916728}
+  - component: {fileID: 2458796147508513699}
+  - component: {fileID: 8561759412925485809}
   m_Layer: 0
   m_Name: JellyFish
   m_TagString: Enemy
@@ -170,5 +172,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95cdf51c73a0ba04787745673ba39fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpPrefab: {fileID: 5325776008630035559, guid: a95834f610c74f7439366efaa34222f1, type: 3}
+  damageResistance: 0
+--- !u!114 &2458796147508513699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8802075551487487239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8492ed3c706f7884fa593626fab47830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8561759412925485809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8802075551487487239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a844591efd0c39e4f873295665449f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   target: {fileID: 7581330166852469204, guid: a480419278791ac4ba103a40d94bc2e3, type: 3}
-  speed: 5
+  speed: 6

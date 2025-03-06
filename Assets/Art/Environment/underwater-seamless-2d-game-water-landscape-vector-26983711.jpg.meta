@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      underwater-seamless-2d-game-water-landscape-vector-26983711_0: -218055734476485153
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

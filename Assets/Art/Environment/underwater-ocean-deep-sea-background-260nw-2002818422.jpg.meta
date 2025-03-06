@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      underwater-ocean-deep-sea-background-260nw-2002818422_0: 8148901285902518418
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
