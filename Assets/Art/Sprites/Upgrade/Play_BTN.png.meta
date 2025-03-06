@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 46ecebfce8d3e70469175a1efca403b5
+guid: df281bc706911f44ba10fbbb0cf6bd91
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1140337200726453325
-    second: Backward_BTN_0
+      213: 1057737661787670859
+    second: Play_BTN_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,11 +96,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Backward_BTN_0
+      name: Play_BTN_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b359829b55bc20f0800000000000000
-      internalID: -1140337200726453325
+      spriteID: b49086c9cc6ddae00800000000000000
+      internalID: 1057737661787670859
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Backward_BTN_0: -1140337200726453325
+      Play_BTN_0: 1057737661787670859
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,10 +10,10 @@ public class MonsterAI : MonoBehaviour
 
     private bool isDead = false;
     protected int maxHealth = 100;
-    protected float currentHealth = 100;
+    protected float currentHealth = 10;
     private static int killCount = 0;
 
-    public GameObject powerUpPrefab; 
+    public GameObject powerUpPrefab;
     [SerializeField] private float damageResistance = 0f;
     void Start()
     {
@@ -57,9 +57,9 @@ public class MonsterAI : MonoBehaviour
 
         killCount++;
         Debug.Log(killCount);
-        monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters);
+        monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters + 1);
 
-        Destroy(gameObject, 0.8f);
+        Destroy(gameObject, 0.3f);
     }
 
     public static int GetKillCount()

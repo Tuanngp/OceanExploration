@@ -7,13 +7,13 @@ public class SpawnMonsters : MonoBehaviour
     public GameObject bossPrefab;
     public Transform submarine;
     public float minY = -60f, maxY = 0f;
-    [SerializeField] public static int maxMonsters = 2;
+    [SerializeField] public static int maxMonsters = 3;
     public float fixedZ = 0f;
 
     public static List<MonsterMovement> ActiveMonsters = new List<MonsterMovement>();
     private List<GameObject> spawnedMonsters = new List<GameObject>();
 
-    private bool bossSpawned = false; 
+    private bool bossSpawned = false;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class SpawnMonsters : MonoBehaviour
 
     void Update()
     {
-        if (!bossSpawned && MonsterAI.GetKillCount() >= maxMonsters) 
+        if (!bossSpawned && MonsterAI.GetKillCount() >= maxMonsters)
         {
             SpawnBoss();
             bossSpawned = true;
@@ -44,7 +44,7 @@ public class SpawnMonsters : MonoBehaviour
         if (monsterPrefabs.Count == 0) return;
 
         float minX = submarine.position.x;
-        float maxX = submarine.position.x + 3000;
+        float maxX = submarine.position.x + 300;
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
         Vector3 randomSpawnPosition = new Vector3(randomX, randomY, fixedZ);
