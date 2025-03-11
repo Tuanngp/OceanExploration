@@ -72,7 +72,7 @@ public class MonsterAI : MonoBehaviour
         GameObject powerUp = Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
         float randomScale = Random.Range(1.5f, 3f);
         powerUp.transform.localScale = new Vector3(randomScale, randomScale, 1f);
-        powerUp.AddComponent<PowerUpRotation>();  // Xoay nhẹ
+        powerUp.AddComponent<PowerUpRotation>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

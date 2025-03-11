@@ -27,7 +27,7 @@ public class MovementHandler : MonoBehaviour
         healthBarController = GetComponent<HealthBarController>();
         animator = GetComponent<Animator>();
         upgradeManager = GetComponent<UpgradeManager>();
-        // Lấy kích thước nhân vật
+
         SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
         if (playerRenderer != null)
         {

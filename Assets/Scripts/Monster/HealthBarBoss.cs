@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HealthBarBoss : MonoBehaviour
 {
-    [SerializeField] private Image health;  // Thanh máu
+    [SerializeField] private Image health; 
     private BossAI boss;  
 
     void Start()
@@ -12,7 +12,7 @@ public class HealthBarBoss : MonoBehaviour
         {
             Debug.LogError("Không tìm thấy Image cho thanh máu!");
         }
-        boss = GetComponentInParent<BossAI>(); // Tìm boss ở parent
+        boss = GetComponentInParent<BossAI>(); 
         if (boss == null)
         {
             Debug.LogError("HealthBarBoss: Không tìm thấy BossAI!");

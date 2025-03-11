@@ -3,12 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
-    public GameObject pauseMenuUI; // Tham chiếu đến Panel Pause Menu
+    public GameObject pauseMenuUI;
     private bool isPaused = false;
 
     void Start()
     {
-        pauseMenuUI.SetActive(false); // Đảm bảo menu ẩn khi bắt đầu
+        pauseMenuUI.SetActive(false);
     }
 
     public void TogglePause()
@@ -27,19 +27,19 @@ public class PauseMenuController : MonoBehaviour
     void PauseGame()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f; // Dừng game
+        Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f; // Tiếp tục game
+        Time.timeScale = 1f;
         isPaused = false;
     }
 
     public void BackToMenu()
     {
-        Time.timeScale = 1f; // Reset lại thời gian trước khi chuyển Scene
-        SceneManager.LoadScene("MenuScene"); 
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MenuScene");
     }
 }

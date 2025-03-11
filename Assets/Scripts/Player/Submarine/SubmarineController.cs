@@ -55,10 +55,10 @@ public class SubmarineController : MonoBehaviour
             Destroy(other.gameObject);
             ScoreManager.instance.AddScore(10);
         }
-        else if (other.CompareTag("RareResource")) // Thêm tag cho tài nguyên quý hiếm
+        else if (other.CompareTag("RareResource")) 
         {
             Destroy(other.gameObject);
-            upgradeManager.AddResources(10); // Thu thập 10 tài nguyên
+            upgradeManager.AddResources(10);
         } else if (other.CompareTag("RareCoin"))
             {
                 Destroy(other.gameObject);

@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class MapSelection : MonoBehaviour
 {
-    public Image[] maps; // Mảng chứa các ảnh map
-    private int selectedMap = 0; // Map được chọn
+    public Image[] maps;
+    private int selectedMap = 0;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class MapSelection : MonoBehaviour
     {
         if (mapIndex != selectedMap)
         {
-            maps[mapIndex].transform.localScale = Vector3.one * 1.1f; // Phóng to nhẹ
+            maps[mapIndex].transform.localScale = Vector3.one * 1.1f; 
         }
     }
 
@@ -38,7 +38,7 @@ public class MapSelection : MonoBehaviour
     {
         if (mapIndex != selectedMap)
         {
-            maps[mapIndex].transform.localScale = Vector3.one; // Trở lại bình thường
+            maps[mapIndex].transform.localScale = Vector3.one; 
         }
     }
 
@@ -48,13 +48,13 @@ public class MapSelection : MonoBehaviour
         {
             if (i == selectedMap)
             {
-                maps[i].transform.localScale = Vector3.one * 1.15f; // Phóng to hơn map đang chọn
-                maps[i].color = new Color(1f, 1f, 1f, 1f); // Màu sáng hơn
+                maps[i].transform.localScale = Vector3.one * 1.15f; 
+                maps[i].color = new Color(1f, 1f, 1f, 1f);
             }
             else
             {
                 maps[i].transform.localScale = Vector3.one;
-                maps[i].color = new Color(0.8f, 0.8f, 0.8f, 1f); // Màu tối hơn để phân biệt
+                maps[i].color = new Color(0.8f, 0.8f, 0.8f, 1f); 
             }
         }
     }

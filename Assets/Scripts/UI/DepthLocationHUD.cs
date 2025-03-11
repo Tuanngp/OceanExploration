@@ -29,13 +29,11 @@ public class DepthLocationHUD : MonoBehaviour
 
     private void Start()
     {
-        // Tìm reference đến tàu ngầm
         submarineTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (submarineTransform == null)
             Debug.LogError("Submarine not found! Make sure it has the 'Player' tag.");
 
-        // Khởi tạo giá trị ban đầu
         UpdateDepthAndLocation();
     }
 
@@ -51,7 +49,6 @@ public class DepthLocationHUD : MonoBehaviour
         // Tính độ sâu (giả sử Y = 0 là mặt nước)
         currentDepth = Mathf.Abs(submarineTransform.position.y);
 
-        // Format độ sâu
         string depthDisplay;
         if (roundDepthToInt)
             depthDisplay = $"Depth: {Mathf.RoundToInt(currentDepth)}{depthUnit}";
@@ -60,7 +57,6 @@ public class DepthLocationHUD : MonoBehaviour
 
         depthText.text = depthDisplay;
 
-        // Xác định vị trí zone
         UpdateCurrentZone();
     }
 

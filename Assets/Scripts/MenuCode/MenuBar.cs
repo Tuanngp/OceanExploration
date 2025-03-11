@@ -25,12 +25,12 @@ public class MenuBar : MonoBehaviour
     }
     public void OnHoverEnter(int mapIndex)
     {       
-            menuBtns[mapIndex].transform.localScale = Vector3.one * 1.1f; // Phóng to nhẹ     
+            menuBtns[mapIndex].transform.localScale = Vector3.one * 1.1f;
     }
 
     public void OnHoverExit(int mapIndex)
     {
-            menuBtns[mapIndex].transform.localScale = Vector3.one; // Trở lại bình thường
+            menuBtns[mapIndex].transform.localScale = Vector3.one;
     }
 
 
