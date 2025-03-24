@@ -82,7 +82,6 @@ public class UpgradeManager : MonoBehaviour
         speedLevel++;
         speedUpgradeCost += 25;
         UpdateShipStats();
-        Debug.Log($"Speed upgraded to level {speedLevel}");
     }
 
     public void UpgradeHealth()
@@ -93,7 +92,6 @@ public class UpgradeManager : MonoBehaviour
         healthLevel++;
         healthUpgradeCost += 30;
         UpdateShipStats();
-        Debug.Log($"Health upgraded to level {healthLevel}");
     }
 
     public void UpgradeWeapon()
@@ -102,8 +100,6 @@ public class UpgradeManager : MonoBehaviour
 
         rareResources -= weaponUpgradeCost;
         weaponLevel++;
-        shootingHandler.projectileSpeed += 2f;
-        shootingHandler.fireRate *= 0.9f;
         weaponUpgradeCost += 20;
         UpdateShipStats();
         Debug.Log($"Weapon upgraded to level {weaponLevel}. Damage: {shootingHandler.currentDamage}");
@@ -140,7 +136,6 @@ public class UpgradeManager : MonoBehaviour
 
         rareResources -= ships[index].price;
         ships[index].isOwned = true;
-        Debug.Log($"Bought ship at index {index}");
     }
 
     public void SelectShip(int index)
@@ -156,11 +151,9 @@ public class UpgradeManager : MonoBehaviour
         currentBaseDamage = ships[index].baseDamage;
 
         UpdateShipStats();
-
-        Debug.Log($"Selected ship at index {index}");
     }
 
-    private void UpdateShipStats()
+    public void UpdateShipStats()
     {
         float newSpeed = currentBaseSpeed + (speedLevel - 1) * speedIncreasePerLevel;
         float newHealth = currentBaseHealth + (healthLevel - 1) * healthIncreasePerLevel;
@@ -169,11 +162,11 @@ public class UpgradeManager : MonoBehaviour
         movementHandler.baseSpeed = newSpeed;
         movementHandler.maxSpeedMultiplier = 1f + (speedLevel - 1) * 0.2f;
 
-        float healthRatio = healthBarController.currentHealth / healthBarController.maxHealth;
         healthBarController.maxHealth = newHealth;
-        healthBarController.SetHealth(newHealth * healthRatio);
-
-        shootingHandler.UpdateDamage(newDamage);
+        
+        shootingHandler.currentDamage = newDamage;
+        shootingHandler.currentProjectileSpeed = 5f + (weaponLevel - 1) * 2f;
+        shootingHandler.currentFireRate = 0.5f - (weaponLevel - 1) * 0.01f;
     }
 
     public float GetCurrentSpeed() => currentBaseSpeed + (speedLevel - 1) * speedIncreasePerLevel;

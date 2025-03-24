@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7182516951376793718}
   - component: {fileID: 2083879815253808624}
   - component: {fileID: 2998079771465495873}
-  - component: {fileID: 5577943281962596429}
   - component: {fileID: 3142007564762815975}
   - component: {fileID: 4043880059705649664}
+  - component: {fileID: 2546750264175556918}
   m_Layer: 0
   m_Name: SpeedBoostPowerUp
   m_TagString: PowerUp
@@ -188,23 +188,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5577943281962596429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5325776008630035559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf46e0eaeaa40314392f4e2be36ffe7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  background: {fileID: 0}
-  baseSpeed: 20
-  accelerationRate: 2
-  decelerationRate: 1
-  maxSpeedMultiplier: 2
 --- !u!114 &3142007564762815975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,3 +214,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostDuration: 5
   speedMultiplier: 2
+--- !u!114 &2546750264175556918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325776008630035559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48b944e946807d4ba8f5ece0ce77972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 0}
+  baseSpeed: 20
+  accelerationRate: 2
+  decelerationRate: 1
+  maxSpeedMultiplier: 2

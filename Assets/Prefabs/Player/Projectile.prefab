@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6380095544885814685}
   - component: {fileID: 533033716458006681}
   - component: {fileID: 5185601123409360273}
-  - component: {fileID: 7015390769671687662}
   - component: {fileID: 8110771944796903469}
+  - component: {fileID: 6088494999725865594}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -199795467
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 7050190675685524714, guid: 9a9b3f04768fcb6409b59a2ae42448c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -154,20 +154,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7015390769671687662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8740954528778586734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b059b68c5a20543921b00ce1429f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifetime: 3
-  damage: 10
 --- !u!95 &8110771944796903469
 Animator:
   serializedVersion: 7
@@ -190,3 +176,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6088494999725865594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740954528778586734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb5201c533c83348b1c868e6c514271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 3
+  damage: 10

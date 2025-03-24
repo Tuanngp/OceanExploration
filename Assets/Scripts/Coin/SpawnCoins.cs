@@ -56,14 +56,11 @@ public class SpawnCoins : MonoBehaviour
     {
         if (SpawnMonsters.ActiveMonsters.Count == 0)
         {
-            Debug.LogWarning("Không có quái nào để spawn rare coin, bỏ qua.");
             return;
         }
 
         MonsterMovement randomMonster = SpawnMonsters.ActiveMonsters[Random.Range(0, SpawnMonsters.ActiveMonsters.Count)];
         Vector2 spawnPos = (Vector2)randomMonster.transform.position + Random.insideUnitCircle * 10f;
         Instantiate(rareCoinPrefab, spawnPos, Quaternion.identity);
-
-        Debug.Log("Rare coin spawned near monster: " + randomMonster.name);
     }
 }
