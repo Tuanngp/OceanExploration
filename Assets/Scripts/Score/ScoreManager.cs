@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -15,6 +16,17 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
+        scoreText.text = "Score: " + score;
+    }
+
+    internal int GetScore()
+    {
+        return score;
+    }
+
+    internal void SetScore(int score)
+    {
+        this.score = score;
         scoreText.text = "Score: " + score;
     }
 }

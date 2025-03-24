@@ -5,6 +5,7 @@
 [RequireComponent(typeof(ShootingHandler))]
 [RequireComponent(typeof(UpgradeManager))]
 [RequireComponent(typeof(UpgradeUI))]
+[RequireComponent(typeof(AutoSaveManager))]
 
 public class SubmarineController : MonoBehaviour
 {

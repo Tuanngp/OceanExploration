@@ -26,7 +26,6 @@ public class BossAI : MonsterAI
     protected override void Die()
     {
         base.Die();
-        Debug.Log("Boss bị tiêu diệt!");
         SpawnSpecialReward();
     }
 

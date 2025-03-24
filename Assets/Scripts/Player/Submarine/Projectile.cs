@@ -26,10 +26,9 @@ public class Projectile : MonoBehaviour
             if (other.TryGetComponent(out MonsterAI target))
             {
                 isHit = true;
+                Debug.Log("Đạn bắn trúng quái vật! " + damage);
                 target.TakeDamage(damage);
-                Debug.Log("Hit enemy" + upgradeManager.selectedShipIndex);
                 animator.SetInteger("impact", upgradeManager.selectedShipIndex);
-                Debug.Log("Get impact" + animator.GetInteger("impact"));
             }
             GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             Destroy(gameObject, 0.45f);

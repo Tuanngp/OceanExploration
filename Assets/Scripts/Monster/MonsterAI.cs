@@ -56,7 +56,6 @@ public class MonsterAI : MonoBehaviour
         monsterAnimation?.TriggerDeath();
 
         killCount++;
-        Debug.Log(killCount);
         monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters + 1);
 
         Destroy(gameObject, 0.3f);
@@ -82,7 +81,6 @@ public class MonsterAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             monsterAnimation?.TriggerAttack();
-            Debug.Log("Monster's attacking");
         }
     }
 }

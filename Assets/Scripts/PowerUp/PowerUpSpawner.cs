@@ -21,7 +21,6 @@ public class PowerUpSpawner : MonoBehaviour
     {
         if (SpawnMonsters.ActiveMonsters.Count == 0)
         {
-            Debug.LogWarning("Không có quái nào để spawn rare coin, bỏ qua.");
             return;
         }
 
@@ -36,7 +35,6 @@ public class PowerUpSpawner : MonoBehaviour
 
         if (randomMonster == null || randomMonster.gameObject == null)
         {
-            Debug.LogWarning("Không tìm thấy quái vật hợp lệ để spawn power-up!");
             return;
         }
 
