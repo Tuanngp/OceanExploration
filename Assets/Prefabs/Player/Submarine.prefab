@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHealth: 100
+  currentHealth: 0
   maxMana: 100
   currentMana: 0
   maxStamina: 100
@@ -326,6 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHealth: 100
+  currentHealth: 0
   maxMana: 100
   currentMana: 0
   maxStamina: 100
@@ -369,21 +371,13 @@ MonoBehaviour:
   healthLevel: 1
   weaponLevel: 1
   maxLevel: 5
-  baseSpeedValue: 5
   speedIncreasePerLevel: 2
-  baseHealthValue: 100
   healthIncreasePerLevel: 20
-  baseDamageValue: 10
   damageIncreasePerLevel: 5
   shipSpriteRenderer: {fileID: 8377259587039797353}
-  shipParts:
-  - {fileID: -8470065270455496937, guid: 2f141b53978059947a98bd72c5f3f20b, type: 3}
-  - {fileID: 9198504000052830509, guid: e3c95f9f45c523a4ab1bb784a4d7f742, type: 3}
-  - {fileID: -3888763405390159545, guid: aa2879c085663604d8a0671246a71dbe, type: 3}
-  - {fileID: -755008450123188125, guid: c4b22b34d2d252d44981fcbb98eef841, type: 3}
-  - {fileID: 1151715515443333116, guid: f91fc89b4e68ce04489fb63056b00183, type: 3}
-  - {fileID: -2540028914066445034, guid: 540bdb94e9c35944597d2ada27758ecb, type: 3}
+  ships: []
   currentShipPartIndex: 0
+  selectedShipIndex: 0
 --- !u!114 &4151126739483649091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,6 +407,10 @@ MonoBehaviour:
   closeButton: {fileID: 0}
   previousShipButton: {fileID: 0}
   nextShipButton: {fileID: 0}
+  shipPreviewImage: {fileID: 0}
+  shipPriceText: {fileID: 0}
+  buyOrSelectButton: {fileID: 0}
+  buyOrSelectButtonText: {fileID: 0}
   upgradeManager: {fileID: 0}
 --- !u!50 &2672879590057395204
 Rigidbody2D:

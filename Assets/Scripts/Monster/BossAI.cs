@@ -37,7 +37,7 @@ public class BossAI : MonsterAI
 
     public override void TakeDamage(float damage)
     {
-        base.TakeDamage(damage);
+        base.TakeDamage(100);
 
         if (healthBar != null)
         {
