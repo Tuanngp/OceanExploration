@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 3855673596282890228}
   - component: {fileID: 7179217974025253272}
   - component: {fileID: 2083366444701568469}
-  - component: {fileID: 8115650600516506053}
-  - component: {fileID: 3176331374389555644}
+  - component: {fileID: 6211931997081320607}
   m_Layer: 0
   m_Name: Turtle
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 4723107735738678597, guid: bd2595d4fe7450948ad6506a367d110a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -144,7 +143,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -172,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8492ed3c706f7884fa593626fab47830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8115650600516506053
+--- !u!114 &6211931997081320607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,22 +180,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4369401262962383115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a844591efd0c39e4f873295665449f75, type: 3}
+  m_Script: {fileID: 11500000, guid: 69a88f5675c012440a10c4191e0c8748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 7581330166852469204, guid: a480419278791ac4ba103a40d94bc2e3, type: 3}
-  speed: 5
---- !u!114 &3176331374389555644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4369401262962383115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95cdf51c73a0ba04787745673ba39fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpPrefab: {fileID: 5325776008630035559, guid: a95834f610c74f7439366efaa34222f1, type: 3}
-  damageResistance: 0
+  moveSpeed: 6
+  detectionRadius: 10
+  followDistance: 5
+  smoothTime: 0.2
