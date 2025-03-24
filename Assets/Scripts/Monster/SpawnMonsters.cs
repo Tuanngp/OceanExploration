@@ -13,7 +13,7 @@ public class SpawnMonsters : MonoBehaviour
     public static List<MonsterMovement> ActiveMonsters = new List<MonsterMovement>();
     private List<GameObject> spawnedMonsters = new List<GameObject>();
 
-    private bool bossSpawned = false; 
+    private bool bossSpawned = false;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class SpawnMonsters : MonoBehaviour
 
     void Update()
     {
-        if (!bossSpawned && MonsterAI.GetKillCount() >= maxMonsters) 
+        if (!bossSpawned && MonsterAI.GetKillCount() >= maxMonsters)
         {
             SpawnBoss();
             bossSpawned = true;
