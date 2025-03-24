@@ -3,8 +3,8 @@ using UnityEngine;
 public class ShipPartsSystem : MonoBehaviour
 {
     public UpgradeManager playerData;
-    public SpriteRenderer shipRenderer; // Hiển thị sprite của tàu
-    public Sprite[] shipParts; // Danh sách các sprite của bộ phận tàu
+    public SpriteRenderer shipRenderer; 
+    public Sprite[] shipParts; 
 
     public void NextPart()
     {

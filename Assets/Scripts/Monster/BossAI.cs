@@ -12,7 +12,7 @@ public class BossAI : MonsterAI
 
         maxHealth = 5000;
         currentHealth = maxHealth;
-        healthBar = GetComponentInChildren<HealthBarBoss>(); // Tìm health bar trong con
+        healthBar = GetComponentInChildren<HealthBarBoss>();
     }
     public float GetCurrentHealth()
     {

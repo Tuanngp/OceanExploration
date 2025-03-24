@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 50e78ed99107df24fa12754d338e70ff
+guid: 46ecebfce8d3e70469175a1efca403b5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6685773805012054826
-    second: Table_02_0
+      213: -1140337200726453325
+    second: Backward_BTN_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Table_02_0
+      name: Backward_BTN_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 421
-        height: 171
+        width: 210
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a23fa585ad3a8cc50800000000000000
-      internalID: 6685773805012054826
+      spriteID: 3b359829b55bc20f0800000000000000
+      internalID: -1140337200726453325
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Table_02_0: 6685773805012054826
+      Backward_BTN_0: -1140337200726453325
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -14,7 +14,6 @@ public class SpeedBoostHandler : MonoBehaviour
         movementHandler = GetComponent<MovementHandler>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Lưu màu gốc để đổi màu hiệu ứng
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color;
@@ -25,27 +24,27 @@ public class SpeedBoostHandler : MonoBehaviour
     {
         if (speedBoostCoroutine != null)
         {
-            StopCoroutine(speedBoostCoroutine);  // Reset nếu đang có boost
+            StopCoroutine(speedBoostCoroutine); 
         }
         speedBoostCoroutine = StartCoroutine(SpeedBoostRoutine(duration, multiplier));
     }
 
     private IEnumerator SpeedBoostRoutine(float duration, float multiplier)
     {
-        float originalMultiplier = movementHandler.maxSpeedMultiplier;   // Lưu giá trị gốc
-        movementHandler.maxSpeedMultiplier *= multiplier;                 // Tăng tối đa tốc độ
+        float originalMultiplier = movementHandler.maxSpeedMultiplier;  
+        movementHandler.maxSpeedMultiplier *= multiplier;          
 
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = Color.yellow;  // Hiệu ứng sáng
+            spriteRenderer.color = Color.yellow; 
         }
 
         yield return new WaitForSeconds(duration);
 
-        movementHandler.maxSpeedMultiplier = originalMultiplier;  // Reset lại maxSpeedMultiplier
+        movementHandler.maxSpeedMultiplier = originalMultiplier;
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = originalColor;  // Trả màu về gốc
+            spriteRenderer.color = originalColor;
         }
     }
 }

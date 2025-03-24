@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance; // Singleton để truy cập từ mọi nơi
-    public TMP_Text scoreText; // UI Text hiển thị điểm
-    public int score = 0; // Biến lưu điểm
+    public static ScoreManager instance;
+    public TMP_Text scoreText; 
+    public int score = 0; 
 
     void Awake()
     {
-        instance = this; // Đảm bảo chỉ có 1 ScoreManager
+        instance = this;
     }
 
     public void AddScore(int amount)
     {
-        score += amount; // Cộng điểm
-        scoreText.text = "Score: " + score; // Cập nhật UI
+        score += amount;
+        scoreText.text = "Score: " + score;
     }
 }

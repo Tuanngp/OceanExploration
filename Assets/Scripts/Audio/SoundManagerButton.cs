@@ -10,7 +10,7 @@ public class SoundManagerButton : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Giữ lại qua các scene
+            DontDestroyOnLoad(gameObject);
             audioSource = GetComponent<AudioSource>();
         }
         else

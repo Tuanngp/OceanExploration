@@ -5,12 +5,13 @@ public class MonsterMovement : MonoBehaviour
     public Transform target;
     public float speed = 5f;
     private MonsterAnimation monsterAnimation;
-
+    private WarningSystem warningSystem;
     private bool hasSpottedPlayer = false;
 
     void Start()
     {
         monsterAnimation = GetComponent<MonsterAnimation>();
+        warningSystem = WarningSystem.Instance;
     }
 
     void Update()
@@ -20,6 +21,7 @@ public class MonsterMovement : MonoBehaviour
             if (!hasSpottedPlayer && IsTargetVisible())
             {
                 hasSpottedPlayer = true;
+                warningSystem?.ShowWarning();
                 Debug.Log("Monster đã phát hiện tàu, bắt đầu đuổi theo!");
             }
 

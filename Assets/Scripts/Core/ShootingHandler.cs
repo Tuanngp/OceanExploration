@@ -39,7 +39,7 @@ public class ShootingHandler : MonoBehaviour
         Debug.Log("Index:" + upgradeManager.selectedShipIndex);
         if (projectileAnimator)
         {
-            projectileAnimator.SetInteger("fly", upgradeManager.selectedShipIndex); // Chọn animation đúng
+            projectileAnimator.SetInteger("fly", upgradeManager.selectedShipIndex);
             Debug.Log("Get fly" + projectileAnimator.GetInteger("fly"));
         }
         else
