@@ -15,12 +15,14 @@ public class BossAI : MonsterAI
         victoryCanvas = GameObject.Find("VictoryCanvas");
         BottomHUBPanel = GameObject.Find("Bottom HUB Panel");
         KillProgressBar = GameObject.Find("KillProgressBar");
-        Debug.Log(victoryCanvas != null ? "True" : "False");
         maxHealth = 5000;
         currentHealth = maxHealth;
         healthBar = GetComponentInChildren<HealthBarBoss>();
 
-        victoryCanvas.SetActive(false); // Ẩn UI Victory ban đầu
+        if(victoryCanvas != null)
+        {
+            victoryCanvas.SetActive(false);
+        }
 
     }
     public float GetCurrentHealth()
@@ -40,19 +42,13 @@ public class BossAI : MonsterAI
     }
     private void ShowVictoryUI()
     {
-        Debug.Log("Đang gọi ShowVictoryUI...");
         if (victoryCanvas != null)
         {
-            Debug.Log("VictoryCanvas không null, đang hiển thị UI chiến thắng...");
             victoryCanvas.SetActive(true);
             Debug.Log(victoryCanvas);
             BottomHUBPanel.SetActive(false);
             KillProgressBar.SetActive(false);
             Time.timeScale = 0f;
-        }
-        else
-        {
-            Debug.LogWarning("VictoryCanvas là null! Hãy kiểm tra Inspector.");
         }
     }
 
