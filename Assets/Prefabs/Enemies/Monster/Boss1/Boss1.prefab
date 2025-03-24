@@ -393,6 +393,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpPrefab: {fileID: 5325776008630035559, guid: a95834f610c74f7439366efaa34222f1, type: 3}
   damageResistance: 0
+  victoryCanvas: {fileID: 4320195397103139834, guid: 34f3d96678150194d8840ecd07606a6c, type: 3}
+  BottomHUBPanel: {fileID: 971956800253004901, guid: 4ab22467cc100054e8184fe42f62c87c, type: 3}
+  KillProgressBar: {fileID: 2123455935481025700, guid: 47402530b82bd5641a0e91700f3cf243, type: 3}
 --- !u!1 &8059684882774749386
 GameObject:
   m_ObjectHideFlags: 0
