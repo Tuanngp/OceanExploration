@@ -11,18 +11,12 @@ public class SpeedBoostPowerUp : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("PowerUp chạm đúng Player!");
 
             SpeedBoostHandler speedBoostHandler = other.GetComponent<SpeedBoostHandler>();
 
             if (speedBoostHandler != null)
             {
-                Debug.Log("SpeedBoostHandler TÌM THẤY, kích hoạt boost!");
                 speedBoostHandler.ActivateSpeedBoost(boostDuration, speedMultiplier);
-            }
-            else
-            {
-                Debug.LogWarning("Không tìm thấy SpeedBoostHandler trên Player.");
             }
 
             Destroy(gameObject);

@@ -45,18 +45,17 @@ public class HealthBarController : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentMana = maxMana;
-        // currentStamina = maxStamina;
         healthLeft = healthBar.Find("Hub/Health/HealthLeft").GetComponent<Image>();
         healthRight = healthBar.Find("Hub/Health/HealthRight").GetComponent<Image>();
         manaLeft = healthBar.Find("Hub/Mana/ManaLeft").GetComponent<Image>();
         manaRight = healthBar.Find("Hub/Mana/ManaRight").GetComponent<Image>();
+        // currentStamina = maxStamina;
         // staminaPip = healthBar.Find("Hub/Stamina pip/Stamina pip").GetComponent<Image>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy detected! Decreasing health.");
             DecreaseHealth(damagePerHit);
         }
     }
@@ -64,7 +63,6 @@ public class HealthBarController : MonoBehaviour
     {
         currentMana = Mathf.Clamp(currentMana - amount, 0, maxMana);
         Debug.Log("Current mana: " + currentMana);
-
         UpdateManaUI();
     }
 
@@ -72,7 +70,6 @@ public class HealthBarController : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         Debug.Log("Current health: " + currentHealth);
-
         UpdateHealthUI();
     }
 
@@ -105,7 +102,6 @@ public class HealthBarController : MonoBehaviour
     public void SetHealth(float newHealth)
     {
         currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
-        Debug.Log("Health set to: " + currentHealth);
         UpdateHealthUI();
     }
 

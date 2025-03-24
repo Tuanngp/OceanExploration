@@ -22,7 +22,6 @@ public class MonsterMovement : MonoBehaviour
             {
                 hasSpottedPlayer = true;
                 warningSystem?.ShowWarning();
-                Debug.Log("Monster đã phát hiện tàu, bắt đầu đuổi theo!");
             }
 
             if (hasSpottedPlayer)
