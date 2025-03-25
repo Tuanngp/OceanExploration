@@ -58,6 +58,12 @@ public class MonsterAI : MonoBehaviour
         killCount++;
         monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters + 1);
 
+        ScoreManager.instance.AddScore(100);
+
+        // Gọi Singleton để spawn giọt máu
+        BloodSpawner.Instance?.SpawnBlood(transform.position);
+
+
         Destroy(gameObject, 0.3f);
     }
 

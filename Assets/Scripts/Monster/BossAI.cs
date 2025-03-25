@@ -19,7 +19,7 @@ public class BossAI : MonsterAI
         currentHealth = maxHealth;
         healthBar = GetComponentInChildren<HealthBarBoss>();
 
-        if(victoryCanvas != null)
+        if (victoryCanvas != null)
         {
             victoryCanvas.SetActive(false);
         }
@@ -37,6 +37,12 @@ public class BossAI : MonsterAI
     protected override void Die()
     {
         base.Die();
+        Debug.Log("Boss bị tiêu diệt!");
+
+        ScoreManager.instance.AddScore(300);
+        // Spawn máu ngay tại vị trí quái khi nó chết
+        BloodSpawner.Instance?.SpawnBlood(transform.position);
+
         SpawnSpecialReward();
         ShowVictoryUI();
     }
