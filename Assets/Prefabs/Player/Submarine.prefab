@@ -1,57 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2100842864363223351
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1898271818749547145}
-  - component: {fileID: 1337671185954702745}
-  m_Layer: 0
-  m_Name: UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1898271818749547145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100842864363223351}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7581330166852469204}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1337671185954702745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100842864363223351}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd07136be9a23b44bba5dec675b16b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  maxHealth: 100
-  currentHealth: 0
-  maxMana: 100
-  currentMana: 0
-  maxStamina: 100
-  currentStamina: 0
-  damagePerHit: 10
 --- !u!1 &4218453283190180387
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,11 +191,12 @@ GameObject:
   - component: {fileID: 3357245864985474739}
   - component: {fileID: 9115444008671319841}
   - component: {fileID: 7084494436730375559}
-  - component: {fileID: 8373351341240035582}
-  - component: {fileID: 402646774927318088}
   - component: {fileID: 1290962062652064060}
   - component: {fileID: 5523952873132465567}
   - component: {fileID: 3854767966409338040}
+  - component: {fileID: 5018175565544405490}
+  - component: {fileID: 4066944419423135367}
+  - component: {fileID: 331342340590280018}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Player
@@ -333,19 +282,19 @@ MonoBehaviour:
   - shipSprite: {fileID: -8470065270455496937, guid: 2f141b53978059947a98bd72c5f3f20b, type: 3}
     price: 0
     isOwned: 1
-    baseSpeed: 5
+    baseSpeed: 20
     baseHealth: 100
     baseDamage: 20
   - shipSprite: {fileID: 9198504000052830509, guid: e3c95f9f45c523a4ab1bb784a4d7f742, type: 3}
     price: 1250
     isOwned: 0
-    baseSpeed: 15
+    baseSpeed: 24
     baseHealth: 200
     baseDamage: 30
   - shipSprite: {fileID: -3888763405390159545, guid: aa2879c085663604d8a0671246a71dbe, type: 3}
     price: 1750
     isOwned: 0
-    baseSpeed: 25
+    baseSpeed: 28
     baseHealth: 1000
     baseDamage: 50
   - shipSprite: {fileID: -755008450123188125, guid: c4b22b34d2d252d44981fcbb98eef841, type: 3}
@@ -531,7 +480,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoSaveInterval: 60
   saveOnExit: 1
---- !u!114 &8373351341240035582
+--- !u!114 &1290962062652064060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935458066640018529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48b944e946807d4ba8f5ece0ce77972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 0}
+  baseSpeed: 20
+  accelerationRate: 2
+  decelerationRate: 1
+  maxSpeedMultiplier: 2
+--- !u!114 &5523952873132465567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935458066640018529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a388ea1e3c6adb7459b476ecb4feeee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 360
+--- !u!114 &3854767966409338040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935458066640018529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfdf260d7a73b246ae44a1f776f9402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8740954528778586734, guid: c831b1bb9e80e67469944e50f461e504, type: 3}
+  firePoint: {fileID: 7000971807099973310}
+  projectileSpeed: 10
+  fireRate: 0.5
+  baseDamage: 10
+  currentDamage: 0
+  currentFireRate: 0
+  currentProjectileSpeed: 0
+--- !u!114 &5018175565544405490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -584,7 +583,7 @@ MonoBehaviour:
     - rid: 9033023769506218055
       type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
---- !u!212 &402646774927318088
+--- !u!212 &4066944419423135367
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -639,7 +638,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1290962062652064060
+--- !u!114 &331342340590280018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -648,45 +647,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5935458066640018529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a48b944e946807d4ba8f5ece0ce77972, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c054dfaf53cf3a4a9ef0c693c44f5fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 0}
-  baseSpeed: 20
-  accelerationRate: 2
-  decelerationRate: 1
-  maxSpeedMultiplier: 2
---- !u!114 &5523952873132465567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5935458066640018529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a388ea1e3c6adb7459b476ecb4feeee1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 360
---- !u!114 &3854767966409338040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5935458066640018529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acfdf260d7a73b246ae44a1f776f9402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8740954528778586734, guid: c831b1bb9e80e67469944e50f461e504, type: 3}
-  firePoint: {fileID: 7000971807099973310}
-  projectileSpeed: 10
-  fireRate: 0.5
-  baseDamage: 10
-  currentDamage: 0
+  petPrefab: {fileID: 4369401262962383115, guid: 7f11d89aa95fef64caf7942e18ac4d3f, type: 3}
+  submarine: {fileID: 5935458066640018529}
+  petOffset: {x: -3, y: -5, z: 0}
 --- !u!1 &6073422344750264741
 GameObject:
   m_ObjectHideFlags: 0

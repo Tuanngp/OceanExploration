@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PetAI : MonoBehaviour
 {
-    public float moveSpeed = 6f;  // Tăng tốc độ di chuyển một chút
-    public float detectionRadius = 10f;
+    public float moveSpeed = 15f;  // Tăng tốc độ di chuyển một chút
+    public float detectionRadius = 50f;
     public float followDistance = 5f;  // Giảm xuống để kiểm tra
     public float smoothTime = 0.2f; // Thời gian để di chuyển mượt
 
@@ -17,12 +17,12 @@ public class PetAI : MonoBehaviour
 
         if (submarine == null)
         {
-            Debug.LogError("Không tìm thấy Submarine trong Scene! Đảm bảo bạn đã gán tag 'Player'!");
+            // Debug.LogError("Không tìm thấy Submarine trong Scene! Đảm bảo bạn đã gán tag 'Player'!");
             return;
         }
 
         transform.position = submarine.transform.position + new Vector3(-3, -5, 0);
-        Debug.Log("Pet đã được gán vị trí ban đầu tại tàu ngầm: " + transform.position);
+        // Debug.Log("Pet đã được gán vị trí ban đầu tại tàu ngầm: " + transform.position);
     }
 
     void Update()
@@ -47,7 +47,7 @@ public class PetAI : MonoBehaviour
     void MoveTowards(Vector3 targetPosition)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
-        Debug.Log("Moving towards: " + targetPosition + " | Direction: " + direction);
+        // Debug.Log("Moving towards: " + targetPosition + " | Direction: " + direction);
 
         // Di chuyển mượt mà về phía mục tiêu
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime, moveSpeed);
@@ -75,7 +75,7 @@ public class PetAI : MonoBehaviour
         GameObject nearestCoin = null;
         float shortestDistance = Mathf.Infinity;
 
-        Debug.Log($"Tìm thấy {coins.Length} Coin và {rareCoins.Length} RareCoin trong scene.");
+        // Debug.Log($"Tìm thấy {coins.Length} Coin và {rareCoins.Length} RareCoin trong scene.");
 
         // Kiểm tra Coin bình thường
         foreach (GameObject coin in coins)
@@ -101,11 +101,11 @@ public class PetAI : MonoBehaviour
 
         if (nearestCoin != null)
         {
-            Debug.Log("Coin gần nhất ở vị trí: " + nearestCoin.transform.position);
+            // Debug.Log("Coin gần nhất ở vị trí: " + nearestCoin.transform.position);
         }
         else
         {
-            Debug.Log("Không tìm thấy coin nào trong phạm vi.");
+            // Debug.Log("Không tìm thấy coin nào trong phạm vi.");
         }
 
         return nearestCoin;
