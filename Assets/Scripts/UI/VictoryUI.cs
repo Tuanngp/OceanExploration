@@ -12,7 +12,7 @@ public class VictoryUI : MonoBehaviour
 
     public void MainMenu()
     {
-        Time.timeScale = 1f;
+       // Time.timeScale = 1f;
         SceneManager.LoadScene("MapScene"); // Thay bằng tên Scene của Menu chính
     }
 }

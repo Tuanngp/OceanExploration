@@ -16,7 +16,7 @@ public class MapSelection : MonoBehaviour
     public void SelectMap(int mapIndex)
     {
         selectedMap = mapIndex;
-        PlayerPrefs.SetInt("SelectedMap", mapIndex);
+        //PlayerPrefs.SetInt("SelectedMap", mapIndex);
         UpdateMapSelection();
     }
 
