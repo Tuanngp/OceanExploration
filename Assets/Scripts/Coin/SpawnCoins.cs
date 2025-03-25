@@ -38,7 +38,7 @@ public class SpawnCoins : MonoBehaviour
     {
         while (rareCoinsSpawned < numberOfRareCoins)
         {
-            SpawnRareCoin();
+            // SpawnRareCoin();
             rareCoinsSpawned++;
             yield return new WaitForSeconds(rareCoinInterval);
         }

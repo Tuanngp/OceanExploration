@@ -4,18 +4,18 @@ using UnityEngine.UI;
 public class MonsterProgress : MonoBehaviour
 {
     public Slider progressBar;
-    private GameObject victoryCanvas;
+    private GameObject victory;
     private GameObject BottomHUBPanel;
     private GameObject KillProgressBar;
 
     void Start()
     {
-        victoryCanvas = GameObject.Find("VictoryCanvas");
+        victory = GameObject.Find("VictoryCanvas/Victory");
         BottomHUBPanel = GameObject.Find("Bottom HUB Panel");
         KillProgressBar = GameObject.Find("KillProgressBar");
-        if (victoryCanvas != null)
+        if (victory != null)
         {
-            victoryCanvas.SetActive(false);
+            victory.SetActive(false);
         }
     }
     public void UpdateProgress(int monstersKilled, int totalMonsters)
@@ -31,10 +31,10 @@ public class MonsterProgress : MonoBehaviour
     }
     private void ShowVictoryUI()
     {
-        if (victoryCanvas != null)
+        if (victory != null)
         {
-            victoryCanvas.SetActive(true);
-            Debug.Log(victoryCanvas);
+            victory.SetActive(true);
+            Debug.Log(victory);
             BottomHUBPanel.SetActive(false);
             KillProgressBar.SetActive(false);
             Time.timeScale = 0f;

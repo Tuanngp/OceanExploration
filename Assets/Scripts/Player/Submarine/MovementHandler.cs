@@ -38,7 +38,9 @@ public class MovementHandler : MonoBehaviour
 
     private void CalculateBounds()
     {
-        if (background == null) return;
+        if (background == null)  {
+            background = GameObject.Find("Background").transform;
+        };
 
         var spriteRenderers = background.GetComponentsInChildren<SpriteRenderer>();
         if (spriteRenderers.Length == 0) return;
