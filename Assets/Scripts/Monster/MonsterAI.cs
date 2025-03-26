@@ -7,6 +7,9 @@ public class MonsterAI : MonoBehaviour
     protected MonsterAnimation monsterAnimation;
     protected MonsterMovement monsterMovement;
     private static MonsterProgress monsterProgress;
+    public UpgradeManager upgradeManager;
+
+    public GameObject submarine;
 
     private bool isDead = false;
     protected int maxHealth = 100;
@@ -19,6 +22,8 @@ public class MonsterAI : MonoBehaviour
     {
         monsterAnimation = GetComponent<MonsterAnimation>();
         monsterMovement = GetComponent<MonsterMovement>();
+        submarine = GameObject.FindGameObjectWithTag("Player");
+        upgradeManager = submarine.GetComponent<UpgradeManager>();
 
         if (monsterProgress == null)
         {
@@ -58,7 +63,7 @@ public class MonsterAI : MonoBehaviour
         killCount++;
         monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters + 1);
 
-        ScoreManager.instance.AddScore(100);
+        //upgradeManager.AddResources(100);
 
         // Gọi Singleton để spawn giọt máu
         BloodSpawner.Instance?.SpawnBlood(transform.position);
