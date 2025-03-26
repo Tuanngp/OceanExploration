@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PetAI : MonoBehaviour
 {
+    private UpgradeManager upgradeManager;
     public float moveSpeed = 15f;  // Tăng tốc độ di chuyển một chút
     public float detectionRadius = 50f;
     public float followDistance = 5f;  // Giảm xuống để kiểm tra
@@ -13,8 +14,9 @@ public class PetAI : MonoBehaviour
 
     void Start()
     {
-        submarine = GameObject.FindGameObjectWithTag("Player");
 
+        submarine = GameObject.FindGameObjectWithTag("Player");
+        upgradeManager = submarine.GetComponent<UpgradeManager>();
         if (submarine == null)
         {
             // Debug.LogError("Không tìm thấy Submarine trong Scene! Đảm bảo bạn đã gán tag 'Player'!");
@@ -118,12 +120,12 @@ public class PetAI : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             Destroy(other.gameObject);
-            ScoreManager.instance.AddScore(10);
+            upgradeManager.AddResources(10);
         }
         else if (other.CompareTag("RareCoin"))
         {
             Destroy(other.gameObject);
-            ScoreManager.instance.AddScore(50);
+            upgradeManager.AddResources(50);
         }
     }
 }
