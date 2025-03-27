@@ -5,17 +5,15 @@ using UnityEngine;
 public class BossAI : MonsterAI
 {
     private HealthBarBoss healthBar;
-    
+
     void Start()
     {
         monsterAnimation = GetComponent<MonsterAnimation>();
         monsterMovement = GetComponent<MonsterMovement>();
-        
+
         maxHealth = 5000;
         currentHealth = maxHealth;
         healthBar = GetComponentInChildren<HealthBarBoss>();
-
-        
 
     }
     public float GetCurrentHealth()
@@ -32,14 +30,13 @@ public class BossAI : MonsterAI
         base.Die();
         Debug.Log("Boss bị tiêu diệt!");
 
-        ScoreManager.instance.AddScore(300);
         // Spawn máu ngay tại vị trí quái khi nó chết
         BloodSpawner.Instance?.SpawnBlood(transform.position);
 
         SpawnSpecialReward();
-    //    ShowVictoryUI();
+        //    ShowVictoryUI();
     }
-    
+
 
 
     private void SpawnSpecialReward()
