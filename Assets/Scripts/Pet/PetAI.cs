@@ -10,7 +10,7 @@ public class PetAI : MonoBehaviour
 
     private GameObject submarine;
     private GameObject targetCoin;
-    private Vector3 velocity = Vector3.zero; // Dùng cho SmoothDamp
+    private Vector3 velocity = Vector3.zero;
 
     void Start()
     {
@@ -51,10 +51,8 @@ public class PetAI : MonoBehaviour
         Vector3 direction = (targetPosition - transform.position).normalized;
         // Debug.Log("Moving towards: " + targetPosition + " | Direction: " + direction);
 
-        // Di chuyển mượt mà về phía mục tiêu
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime, moveSpeed);
 
-        // Xoay hướng theo chuyển động
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         if (angle > 90f || angle < -90f)
         {
@@ -79,7 +77,6 @@ public class PetAI : MonoBehaviour
 
         // Debug.Log($"Tìm thấy {coins.Length} Coin và {rareCoins.Length} RareCoin trong scene.");
 
-        // Kiểm tra Coin bình thường
         foreach (GameObject coin in coins)
         {
             float distance = Vector3.Distance(transform.position, coin.transform.position);
@@ -90,7 +87,6 @@ public class PetAI : MonoBehaviour
             }
         }
 
-        // Kiểm tra RareCoin (ưu tiên hơn nếu gần hơn)
         foreach (GameObject rareCoin in rareCoins)
         {
             float distance = Vector3.Distance(transform.position, rareCoin.transform.position);
@@ -112,8 +108,6 @@ public class PetAI : MonoBehaviour
 
         return nearestCoin;
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
