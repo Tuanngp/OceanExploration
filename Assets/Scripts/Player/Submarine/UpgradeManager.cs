@@ -69,7 +69,7 @@ public class UpgradeManager : MonoBehaviour
     public void AddResources(int amount)
     {
         rareResources += amount;
-        Debug.Log($"Collected {amount} resources. Total: {rareResources}");
+        // Debug.Log($"Collected {amount} resources. Total: {rareResources}");
     }
 
     public bool CanUpgrade(int cost) => rareResources >= cost;

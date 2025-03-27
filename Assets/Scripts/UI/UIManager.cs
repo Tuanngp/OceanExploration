@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class BackgroundMusic : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    
-    public static BackgroundMusic Instance { get; private set; }
+    public static UIManager Instance { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -15,10 +15,5 @@ public class BackgroundMusic : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    
-    void Start()
-    {
-        GetComponent<AudioSource>().Play();
     }
 }

@@ -23,6 +23,7 @@ public class MapSelection : MonoBehaviour
     public void PlayGame()
     {
         string sceneName = "scene" + selectedMap;
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
 

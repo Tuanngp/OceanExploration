@@ -3,15 +3,41 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
-    public Transform backgroundParent;
+    private Transform target;
+    private Transform backgroundParent;
     public float smoothSpeed = 0.1f;
 
     private float minY, maxY, minLeft;
     private Camera cam;
 
+    public static CameraFollow Instance { get; private set; }
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
+        var background = GameObject.Find("Background");
+        if (background != null)
+        {
+            backgroundParent = background.transform;
+        }
+
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            target = player.transform;
+        }
         cam = Camera.main;
     }
 

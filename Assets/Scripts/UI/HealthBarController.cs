@@ -26,7 +26,7 @@ public class HealthBarController : MonoBehaviour
     public float currentStamina;
 
     [Header("Damage Settings")]
-    public float damagePerHit = 10f;
+    public float damagePerHit = 100f;
 
     void Awake()
     {
@@ -56,6 +56,7 @@ public class HealthBarController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            damagePerHit = UnityEngine.Random.Range(damagePerHit - 10, damagePerHit + 10);
             DecreaseHealth(damagePerHit);
         }
     }

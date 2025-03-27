@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(MonsterAnimation))]
 [RequireComponent(typeof(MonsterMovement))]
@@ -12,12 +13,12 @@ public class MonsterAI : MonoBehaviour
     public GameObject submarine;
 
     private bool isDead = false;
-    protected int maxHealth = 100;
+    protected int maxHealth = 500;
     protected float currentHealth = 10;
-    private static int killCount = 0;
+    public static int killCount = 0;
 
     public GameObject powerUpPrefab;
-    [SerializeField] private float damageResistance = 0f;
+    [SerializeField] private float damageResistance = 0.2f;
     void Start()
     {
         monsterAnimation = GetComponent<MonsterAnimation>();
@@ -57,19 +58,22 @@ public class MonsterAI : MonoBehaviour
 
     protected virtual void Die()
     {
+        if (isDead) return;
         isDead = true;
         monsterAnimation?.TriggerDeath();
+        BloodSpawner.Instance?.SpawnBlood(transform.position);
+        StartCoroutine(DestroyAfterDelay(0.3f));
+    }
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
         killCount++;
         monsterProgress?.UpdateProgress(killCount, SpawnMonsters.maxMonsters + 1);
+        Debug.Log("Monster bị hủy, killCount hiện tại: " + killCount);
+        Destroy(gameObject);
 
-        //upgradeManager.AddResources(100);
-
-        // Gọi Singleton để spawn giọt máu
-        BloodSpawner.Instance?.SpawnBlood(transform.position);
-
-
-        Destroy(gameObject, 0.3f);
     }
 
     public static int GetKillCount()

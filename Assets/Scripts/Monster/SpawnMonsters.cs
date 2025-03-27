@@ -5,7 +5,7 @@ public class SpawnMonsters : MonoBehaviour
 {
     public List<GameObject> monsterPrefabs;
     public GameObject bossPrefab;
-    public Transform submarine;
+    private Transform submarine;
     public float minY = -60f, maxY = 0f;
     [SerializeField] public static int maxMonsters = 3;
     public float fixedZ = 0f;
@@ -17,6 +17,12 @@ public class SpawnMonsters : MonoBehaviour
 
     void Start()
     {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            Debug.Log("Player found");
+            submarine = player.transform;
+        }
         SpawnRandomMonsters();
     }
 

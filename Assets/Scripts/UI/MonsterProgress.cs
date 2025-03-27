@@ -3,16 +3,18 @@ using UnityEngine.UI;
 
 public class MonsterProgress : MonoBehaviour
 {
-    public Slider progressBar;
     private GameObject victory;
     private GameObject BottomHUBPanel;
-    private GameObject KillProgressBar;
-
+    private Slider KillProgressBar;
     void Start()
     {
-        victory = GameObject.Find("VictoryCanvas/Victory");
+        victory = GameObject.Find("UI/VictoryCanvas/Victory");
         BottomHUBPanel = GameObject.Find("Bottom HUB Panel");
-        KillProgressBar = GameObject.Find("KillProgressBar");
+        var killProgressObject = GameObject.Find("KillProgressBar");
+        if (killProgressObject != null)
+        {
+            KillProgressBar = killProgressObject.GetComponent<Slider>();
+        }
         if (victory != null)
         {
             victory.SetActive(false);
@@ -20,11 +22,12 @@ public class MonsterProgress : MonoBehaviour
     }
     public void UpdateProgress(int monstersKilled, int totalMonsters)
     {
-        progressBar.value = (float)monstersKilled / totalMonsters;
-        Debug.Log("progressBar.value: " + progressBar.value);
+        // Debug.Log("monstersKilled: " + monstersKilled);
+        // Debug.Log("totalMonsters: " + totalMonsters);
+        KillProgressBar.value = (float)monstersKilled / totalMonsters;
         if (monstersKilled >= totalMonsters)
         {
-            Debug.Log("Hoàn thành mục tiêu!");
+            // Debug.Log("Hoàn thành mục tiêu!");
             ShowVictoryUI();
         }
         
@@ -34,9 +37,7 @@ public class MonsterProgress : MonoBehaviour
         if (victory != null)
         {
             victory.SetActive(true);
-            Debug.Log(victory);
-            BottomHUBPanel.SetActive(false);
-            KillProgressBar.SetActive(false);
+            // BottomHUBPanel.SetActive(false);
             Time.timeScale = 0f;
         }
     }

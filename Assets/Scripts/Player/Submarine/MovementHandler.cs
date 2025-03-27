@@ -4,7 +4,7 @@ using System.Linq;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementHandler : MonoBehaviour
 {
-    public Transform background;
+    private Transform background;
     private Vector2 minBounds, maxBounds;
     private Animator animator;
 
@@ -38,9 +38,11 @@ public class MovementHandler : MonoBehaviour
 
     private void CalculateBounds()
     {
-        if (background == null)  {
-            background = GameObject.Find("Background").transform;
-        };
+        var backgroundManager = GameObject.Find("Background");
+        if (backgroundManager != null)
+        {
+            background = backgroundManager.transform;
+        }
 
         var spriteRenderers = background.GetComponentsInChildren<SpriteRenderer>();
         if (spriteRenderers.Length == 0) return;

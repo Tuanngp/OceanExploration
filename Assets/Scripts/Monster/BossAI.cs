@@ -41,12 +41,12 @@ public class BossAI : MonsterAI
 
     private void SpawnSpecialReward()
     {
-        Debug.Log("Spawn phần thưởng đặc biệt cho boss!");
+        // Debug.Log("Spawn phần thưởng đặc biệt cho boss!");
     }
 
     public override void TakeDamage(float damage)
     {
-        base.TakeDamage(100);
+        base.TakeDamage(damage);
 
         if (healthBar != null)
         {

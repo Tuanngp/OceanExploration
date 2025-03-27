@@ -3,10 +3,10 @@ using UnityEngine;
 public class PetAI : MonoBehaviour
 {
     private UpgradeManager upgradeManager;
-    public float moveSpeed = 15f;  // Tăng tốc độ di chuyển một chút
-    public float detectionRadius = 50f;
-    public float followDistance = 5f;  // Giảm xuống để kiểm tra
-    public float smoothTime = 0.2f; // Thời gian để di chuyển mượt
+    private float moveSpeed = 20f;  // Tăng tốc độ di chuyển một chút
+    private float detectionRadius = 50f;
+    private float followDistance = 5f;  // Giảm xuống để kiểm tra
+    private float smoothTime = 0.2f; // Thời gian để di chuyển mượt
 
     private GameObject submarine;
     private GameObject targetCoin;
