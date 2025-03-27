@@ -10,7 +10,7 @@ public class MonsterAI : MonoBehaviour
 
     private bool isDead = false;
     protected int maxHealth = 100;
-    protected float currentHealth = 10;
+    protected float currentHealth = 100;
     private static int killCount = 0;
 
     public GameObject powerUpPrefab;
