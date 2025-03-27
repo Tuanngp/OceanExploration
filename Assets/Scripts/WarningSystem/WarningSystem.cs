@@ -28,7 +28,7 @@ public class WarningSystem : MonoBehaviour
             return;
         }
 
-        Transform canvasTransform = GameObject.Find("Canvas").transform;
+        Transform canvasTransform = GameObject.Find("UI").transform;
         Image warningImage = Instantiate(warningImagePrefab, canvasTransform);
 
         SetupWarningPosition(warningImage);

@@ -155,7 +155,7 @@ public class AutoSaveManager : MonoBehaviour
         upgradeManager.SelectShip(data.selectedShipIndex);
         
         // Load position (optional - could be used for respawning)
-        submarine.transform.position = new Vector3(data.positionX, data.positionY, submarine.transform.position.z);
+        // submarine.transform.position = new Vector3(data.positionX, data.positionY, submarine.transform.position.z);
 
         upgradeManager.UpdateShipStats();
         

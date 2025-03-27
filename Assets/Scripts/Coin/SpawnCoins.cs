@@ -9,7 +9,7 @@ public class SpawnCoins : MonoBehaviour
     public int numberOfRareCoins = 10;      // Tổng số rare coin cần spawn
     public float minY = -50f, maxY = -10f;  // Giới hạn Y để spawn coin
     public float offsetX = 50f;              // Khoảng cách spawn theo X
-    public Transform submarine;              // Tham chiếu tới tàu ngầm
+    private Transform submarine;              // Tham chiếu tới tàu ngầm
 
     public float normalCoinInterval = 0.5f;  // Khoảng delay giữa mỗi coin thường
     public float rareCoinInterval = 2f;      // Khoảng delay giữa mỗi rare coin (tùy độ hiếm)
@@ -19,6 +19,11 @@ public class SpawnCoins : MonoBehaviour
 
     void Start()
     {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            submarine = player.transform;
+        }
         // Chạy 2 Coroutine song song, mỗi thằng tự lo việc spawn của mình
         StartCoroutine(SpawnNormalCoins());
         StartCoroutine(SpawnRareCoins());
@@ -38,7 +43,7 @@ public class SpawnCoins : MonoBehaviour
     {
         while (rareCoinsSpawned < numberOfRareCoins)
         {
-            SpawnRareCoin();
+            // SpawnRareCoin();
             rareCoinsSpawned++;
             yield return new WaitForSeconds(rareCoinInterval);
         }

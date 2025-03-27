@@ -54,7 +54,7 @@ public class SubmarineController : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             Destroy(other.gameObject);
-            ScoreManager.instance.AddScore(10);
+            upgradeManager.AddResources(10);
         }
         else if (other.CompareTag("RareResource"))
         {
@@ -64,7 +64,7 @@ public class SubmarineController : MonoBehaviour
         else if (other.CompareTag("RareCoin"))
         {
             Destroy(other.gameObject);
-            ScoreManager.instance.AddScore(50);
+            upgradeManager.AddResources(50);
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SoundMuteManager : MonoBehaviour
 {
-    public AudioSource backgroundMusic; 
+    private AudioSource backgroundMusic; 
     public Button soundButton; 
     public Sprite soundOnSprite; 
     public Sprite soundOffSprite; 
@@ -12,7 +12,11 @@ public class SoundMuteManager : MonoBehaviour
 
     void Start()
     {
-        
+        var backgroundMusicObject = GameObject.Find("BackgroundMusic");
+        if (backgroundMusicObject != null)
+        {
+            backgroundMusic = backgroundMusicObject.GetComponent<AudioSource>();
+        }
         isMuted = PlayerPrefs.GetInt("Muted", 0) == 1;
         UpdateSoundState();
 

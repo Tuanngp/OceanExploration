@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
             if (other.TryGetComponent(out MonsterAI target))
             {
                 isHit = true;
-                Debug.Log("Đạn bắn trúng quái vật! " + damage);
+                damage = Random.Range(damage - 50, damage + 50);
                 target.TakeDamage(damage);
                 animator.SetInteger("impact", upgradeManager.selectedShipIndex);
             }
