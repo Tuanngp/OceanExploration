@@ -5,6 +5,7 @@ public class VictoryUI : MonoBehaviour
 {
     private GameObject victory;
     public MonsterProgress monsterProgress;
+    private HealthBarController healthBarController;
     void Start() {
         var monsterProgressObject = GameObject.Find("UI/KillProgressBar");
         if (monsterProgressObject != null)
@@ -12,10 +13,16 @@ public class VictoryUI : MonoBehaviour
             monsterProgress = monsterProgressObject.GetComponent<MonsterProgress>();
         }
         victory = GameObject.Find("UI/VictoryCanvas/Victory");
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) {
+            healthBarController = player.GetComponent<HealthBarController>();
+        }
+        
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void RestartGame()
     {
+        healthBarController?.ResetHealth();
         MonsterAI.killCount = 0;
         monsterProgress?.UpdateProgress(0, SpawnMonsters.maxMonsters + 1);
         victory.SetActive(false); // Tắt UI Victory
