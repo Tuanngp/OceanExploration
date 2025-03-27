@@ -63,14 +63,14 @@ public class HealthBarController : MonoBehaviour
     public void DecreaseMana(float amount)
     {
         currentMana = Mathf.Clamp(currentMana - amount, 0, maxMana);
-        Debug.Log("Current mana: " + currentMana);
+        // Debug.Log("Current mana: " + currentMana);
         UpdateManaUI();
     }
 
     public void DecreaseHealth(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
-        Debug.Log("Current health: " + currentHealth);
+        // Debug.Log("Current health: " + currentHealth);
         UpdateHealthUI();
     }
 
@@ -136,5 +136,13 @@ public class HealthBarController : MonoBehaviour
             manaLeft.fillAmount = manaRatio * 2;
             manaRight.fillAmount = 0f;
         }
+    }
+
+    internal void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        currentMana = maxMana;
+        UpdateHealthUI();
+        UpdateManaUI();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 [RequireComponent(typeof(HealthBarController))]
 public class ShootingHandler : MonoBehaviour
@@ -6,7 +7,8 @@ public class ShootingHandler : MonoBehaviour
     [SerializeField] public GameObject projectilePrefab;
     [SerializeField] public Transform firePoint;
     [SerializeField] public float projectileSpeed = 10f;
-    [SerializeField] public float fireRate = 0.5f;
+    [SerializeField] public float fireRate = 1f;
+    private float minFireRate = 0.3f;
     [SerializeField] private float baseDamage = 10f;
     public float currentDamage;
     public float currentFireRate;
@@ -27,7 +29,7 @@ public class ShootingHandler : MonoBehaviour
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
         {
             Shoot();
-            nextFireTime = Time.time + currentFireRate;
+            nextFireTime = Mathf.Max(Time.time + currentFireRate, Time.time + minFireRate);
         }
     }
 
